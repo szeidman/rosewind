@@ -19,13 +19,13 @@ ActiveRecord::Schema.define(version: 20171018163557) do
     t.integer "rating"
     t.text "rating_image"
     t.float "score"
-    t.string "street"
+    t.string "street1"
+    t.string "street2"
     t.string "city"
     t.string "state"
     t.string "zip"
-    t.integer "phone"
-    t.string "email"
     t.text "mission"
+    t.integer "ein"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

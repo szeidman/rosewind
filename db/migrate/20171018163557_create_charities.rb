@@ -7,13 +7,13 @@ class CreateCharities < ActiveRecord::Migration[5.1]
       t.integer :rating
       t.text :rating_image
       t.float :score
-      t.string :street
+      t.string :street1
+      t.string :street2
       t.string :city
       t.string :state
       t.string :zip
-      t.integer :phone
-      t.string :email
       t.text :mission
+      t.integer :ein
 
       t.timestamps
     end
