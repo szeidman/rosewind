@@ -4,7 +4,7 @@ class Charity < ApplicationRecord
   @charity_key = ENV['CHARITYNAV_KEY']
 
   def self.pullCharitiesFromExternalAPI
-    uri = "https://api.data.charitynavigator.org/v2/Organizations?app_id="+@charity_id+"&app_key="+@charity_key+"&minRating=4&pageSize=1000&categoryID=8"
+    uri = "https://api.data.charitynavigator.org/v2/Organizations?app_id="+@charity_id+"&app_key="+@charity_key+"&minRating=4&pageSize=10&categoryID=8"
     response = HTTParty.get(uri)
     eins = []
     response.each do |resp|
@@ -30,5 +30,5 @@ class Charity < ApplicationRecord
       charity.save
     end
   end
-binding.pry
+  binding.pry
 end
