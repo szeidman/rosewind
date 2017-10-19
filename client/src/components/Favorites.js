@@ -1,41 +1,40 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import CharityList from '../components/CharityList';
-import { fetchCharities } from '../actions/charityActions.js';
+import FavoriteList from '../components/FavoriteList';
+import { fetchFavorites } from '../actions/favoriteActions.js';
 import { bindActionCreators } from 'redux';
 import Button from 'react-toolbox/lib/button/Button';
 
-
-class Charities extends Component {
+class Favorites extends Component {
 
   handleOnClick = () => {
-    this.props.fetchCharities();
+    this.props.fetchFavorites();
   };
 
   render() {
     return (
     <div>
-      <h1>CHARITIES</h1>
+      <h1>FAVORITES</h1>
       <Button onClick={this.handleOnClick} raised ripple primary>
         Search
       </Button>
-      <CharityList charityState={this.props.charityState} />
+      <FavoriteList favoriteState={this.props.favoriteState} />
     </div>
   )};
 
 }
 
 const mapStateToProps = (state) => {
-  console.log('mapstatetoprops' + state.charitiesIndex.payloadnames);
+  console.log('mapstatetoprops' + state.charitiesIndex.payloadfaves);
   return {
-    charityState: state.charitiesIndex.payloadnames,
+    favoriteState: state.favoritesIndex.payloadfaves,
   };
 }
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    fetchCharities: fetchCharities
+    fetchFavorites: fetchFavorites
   }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Charities);
+export default connect(mapStateToProps, mapDispatchToProps)(Favorites);
