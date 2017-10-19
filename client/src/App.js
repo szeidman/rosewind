@@ -14,8 +14,10 @@ import './App.css';
 const Top = () =>
   <Router>
     <div>
-      <NavLink to="/">Home</NavLink>
-      <NavLink to="/charities">Charities</NavLink>
+      <Navigation type='vertical'>
+        <NavLink style={{ marginRight: '10px' }} to="/">Home</NavLink>
+        <NavLink style={{ marginRight: '10px' }} to="/charities">Charities</NavLink>
+      </Navigation>
       <Switch>
         <Route exact path="/" compenent={Home} />
         <Route path="/charities" component={Charities} />
@@ -30,7 +32,7 @@ class App extends Component {
     return (
       <div className="App">
         <Top />
-        <Button ripple>
+        <Button raised ripple primary>
           buttontest
         </Button>
       </div>

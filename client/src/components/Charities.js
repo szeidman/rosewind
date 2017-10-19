@@ -3,10 +3,12 @@ import { connect } from 'react-redux';
 import CharityList from '../components/CharityList';
 import { fetchCharities } from '../actions/charityActions.js';
 import { bindActionCreators } from 'redux';
+import Button from 'react-toolbox/lib/button/Button';
+
 
 class Charities extends Component {
 
-  componentDidMount() {
+  handleOnClick = () => {
     this.props.fetchCharities();
   };
 
@@ -14,6 +16,9 @@ class Charities extends Component {
     return (
     <div>
       <h1>CHARITIES</h1>
+      <Button onClick={this.handleOnClick} raised ripple primary>
+        Search
+      </Button>
       <CharityList charityState={this.props.charityState} />
     </div>
   )};
