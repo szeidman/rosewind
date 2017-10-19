@@ -16,7 +16,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Button raised primary>
+        <Button raised primary ripple>
           Bonjour
         </Button>
         <CharityList charityState={this.props.charityState} />
