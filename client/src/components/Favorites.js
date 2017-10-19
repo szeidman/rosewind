@@ -7,7 +7,7 @@ import Button from 'react-toolbox/lib/button/Button';
 
 class Favorites extends Component {
 
-  handleOnClick = () => {
+  componentDidMount() {
     this.props.fetchFavorites();
   };
 
@@ -15,9 +15,6 @@ class Favorites extends Component {
     return (
     <div>
       <h1>FAVORITES</h1>
-      <Button onClick={this.handleOnClick} raised ripple primary>
-        Search
-      </Button>
       <FavoriteList favoriteState={this.props.favoriteState} />
     </div>
   )};
@@ -25,9 +22,8 @@ class Favorites extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log('mapstatetoprops' + state.charitiesIndex.payloadfaves);
   return {
-    favoriteState: state.favoritesIndex.payloadfaves,
+    favoriteState: state.favoritesReducer.payloadfaves,
   };
 }
 

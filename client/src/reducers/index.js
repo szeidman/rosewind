@@ -4,8 +4,8 @@ import favoritesReducer from './favorite_reducer';
 
 
 const rootReducer = combineReducers({
-  charitiesIndex: charitiesReducer,
-  favoritesIndex: favoritesReducer
+  charitiesReducer,
+  favoritesReducer
 });
 
 export default rootReducer;

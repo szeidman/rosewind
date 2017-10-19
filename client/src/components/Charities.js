@@ -26,9 +26,8 @@ class Charities extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log('mapstatetoprops' + state.charitiesIndex.payloadnames);
   return {
-    charityState: state.charitiesIndex.payloadnames,
+    charityState: state.charitiesReducer.charityResults,
   };
 }
 
