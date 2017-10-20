@@ -5,7 +5,7 @@ import CharityList from '../components/CharityList';
 import Charity from './Charity';
 import * as actions from '../actions/charityActions.js';
 import { bindActionCreators } from 'redux';
-import Button from 'react-toolbox/lib/button/Button';
+import RaisedButton from 'material-ui/RaisedButton';
 
 
 class Charities extends Component {
@@ -18,13 +18,17 @@ class Charities extends Component {
     const {match, charityState} = this.props;
     return (
     <div>
-      <h1>CHARITIES</h1>
-      <Button onClick={this.handleOnClick} raised ripple primary>
-        Search
-      </Button>
-      <CharityList charityState={charityState} />
       <Switch>
         <Route path={`${match.url}/:ein`} component={Charity} />
+        <Route exact path={`${match.url}`} render={() => (
+          <div>
+            <h1>CHARITIES</h1>
+            <RaisedButton onClick={this.handleOnClick} primary={true}>
+              Search
+            </RaisedButton>
+            <CharityList charityState={charityState} />
+          </div>
+        )} />
       </Switch>
     </div>
   )};

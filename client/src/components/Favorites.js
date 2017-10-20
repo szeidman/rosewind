@@ -5,7 +5,7 @@ import CharityList from '../components/CharityList';
 import Charity from './Charity';
 import * as actions from '../actions/charityActions.js';
 import { bindActionCreators } from 'redux';
-import Button from 'react-toolbox/lib/button/Button';
+import RaisedButton from 'material-ui/RaisedButton';
 
 
 class Charities extends Component {

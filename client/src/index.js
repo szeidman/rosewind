@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ThemeProvider from 'react-toolbox/lib/ThemeProvider';
-import theme from './toolbox/theme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import './index.css';
 import App from './App';
 import { Provider } from 'react-redux';
@@ -14,9 +13,9 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));
 
 ReactDOM.render(
-  <ThemeProvider theme={theme}>
+  <MuiThemeProvider>
     <Provider store={store}>
       <App />
     </Provider>
-  </ThemeProvider>, document.getElementById('root'));
+  </MuiThemeProvider>, document.getElementById('root'));
 registerServiceWorker();
