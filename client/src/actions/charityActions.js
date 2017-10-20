@@ -18,7 +18,7 @@ const ein = '42103907'
 
    return (dispatch) => {
      dispatch({ type: 'LOADING_CHARITIES' });
-     return fetch('API/charities')
+     return fetch('api/v1/charities')
        .then(response => response.json())
        .then(json => dispatch({ type: 'FETCH_CHARITIES', payload: json }));
    };

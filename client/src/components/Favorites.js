@@ -19,9 +19,6 @@ class Charities extends Component {
     return (
     <div>
       <h1>FAVORITES</h1>
-      <Button onClick={this.handleOnClick} raised ripple primary>
-        Search
-      </Button>
       <CharityList charityState={charityState} />
       <Switch>
         <Route path={`${match.url}/:ein`} component={Charity} />
@@ -32,6 +29,7 @@ class Charities extends Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state)
   return {
     charityState: state.charitiesReducer.charityResults,
   };
