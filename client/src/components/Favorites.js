@@ -1,20 +1,31 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import FavoriteList from '../components/FavoriteList';
-import { fetchFavorites } from '../actions/favoriteActions.js';
+import { Route, Switch } from 'react-router-dom';
+import CharityList from '../components/CharityList';
+import Charity from './Charity';
+import * as actions from '../actions/charityActions.js';
 import { bindActionCreators } from 'redux';
+import Button from 'react-toolbox/lib/button/Button';
 
-class Favorites extends Component {
+
+class Charities extends Component {
 
   componentDidMount() {
-    this.props.fetchFavorites();
+    this.props.actions.fetchFavorites();
   };
 
   render() {
+    const {match, charityState} = this.props;
     return (
     <div>
       <h1>FAVORITES</h1>
-      <FavoriteList favoriteState={this.props.favoriteState} />
+      <Button onClick={this.handleOnClick} raised ripple primary>
+        Search
+      </Button>
+      <CharityList charityState={charityState} />
+      <Switch>
+        <Route path={`${match.url}/:ein`} component={Charity} />
+      </Switch>
     </div>
   )};
 
@@ -22,14 +33,12 @@ class Favorites extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    favoriteState: state.favoritesReducer.payloadfaves,
+    charityState: state.charitiesReducer.charityResults,
   };
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({
-    fetchFavorites: fetchFavorites
-  }, dispatch);
+  return {actions: bindActionCreators(actions, dispatch)};
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Favorites);
+export default connect(mapStateToProps, mapDispatchToProps)(Charities);

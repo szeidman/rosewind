@@ -10,22 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171018163557) do
+ActiveRecord::Schema.define(version: 20171019132453) do
 
   create_table "charities", force: :cascade do |t|
-    t.string "name"
-    t.string "tagline"
-    t.string "cause"
-    t.integer "rating"
-    t.text "rating_image"
-    t.float "score"
-    t.string "street1"
-    t.string "street2"
-    t.string "city"
-    t.string "state"
-    t.string "zip"
-    t.text "mission"
     t.integer "ein"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_charities", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "charity_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

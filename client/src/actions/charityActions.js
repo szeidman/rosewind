@@ -14,6 +14,17 @@ const ein = '42103907'
    };
  }
 
+ export function fetchFavorites() {
+
+   return (dispatch) => {
+     dispatch({ type: 'LOADING_CHARITIES' });
+     return fetch('API/charities')
+       .then(response => response.json())
+       .then(json => dispatch({ type: 'FETCH_CHARITIES', payload: json }));
+   };
+
+ }
+
  export function fetchCharity() {
 
    return (dispatch) => {
