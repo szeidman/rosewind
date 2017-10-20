@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import FavoriteList from '../components/FavoriteList';
 import { fetchFavorites } from '../actions/favoriteActions.js';
 import { bindActionCreators } from 'redux';
-import Button from 'react-toolbox/lib/button/Button';
 
 class Favorites extends Component {
 
