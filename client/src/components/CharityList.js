@@ -1,19 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {List, ListItem} from 'material-ui/List';
+import {Card, CardActions, CardHeader} from 'material-ui/Card';
+import FlatButton from 'material-ui/FlatButton';
 
 const CharityList = ({charityState}) => {
 
-  const charityRender = charityState.map(charity =>
-      <ListItem>
-        <Link key={charity.ein} to={`/charities/${charity.ein}`}>{charity.charityName}</Link>
-      </ListItem>
+  const CharityRender = charityState.map(charity =>
+    <Link key={charity.ein} to={`/charities/${charity.ein}`}>
+      <Card>
+        <CardHeader
+          title={charity.charityName}
+          subtitle={charity.ein}
+        />
+      </Card>
+    </Link>
     );
   return (
     <div>
-      <List>
-        {charityRender}
-      </List>
+      {CharityRender}
     </div>
   );
 

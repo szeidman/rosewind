@@ -1,27 +1,27 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
-import CharityList from '../components/CharityList';
-import Charity from './Charity';
-import * as actions from '../actions/charityActions.js';
+import FavoriteList from '../components/FavoriteList';
+import Favorite from './Favorite';
+import * as actions from '../actions/favoriteActions.js';
 import { bindActionCreators } from 'redux';
 import RaisedButton from 'material-ui/RaisedButton';
 
 
-class Charities extends Component {
+class Favorites extends Component {
 
   componentDidMount() {
     this.props.actions.fetchFavorites();
   };
 
   render() {
-    const {match, charityState} = this.props;
+    const {match, favoriteState} = this.props;
     return (
     <div>
       <h1>FAVORITES</h1>
-      <CharityList charityState={charityState} />
+      <FavoriteList favoriteState={favoriteState} />
       <Switch>
-        <Route path={`${match.url}/:ein`} component={Charity} />
+        <Route path={`${match.url}/:ein`} component={Favorite} />
       </Switch>
     </div>
   )};
@@ -31,7 +31,7 @@ class Charities extends Component {
 const mapStateToProps = (state) => {
   console.log(state)
   return {
-    charityState: state.charitiesReducer.charityResults,
+    favoriteState: state.favoritesReducer.favoriteResults,
   };
 }
 
@@ -39,4 +39,4 @@ const mapDispatchToProps = (dispatch) => {
   return {actions: bindActionCreators(actions, dispatch)};
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Charities);
+export default connect(mapStateToProps, mapDispatchToProps)(Favorites);
