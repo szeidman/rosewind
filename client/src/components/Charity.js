@@ -1,14 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import RaisedButton from 'material-ui/RaisedButton';
-
+import Star from './Star';
 
 const Charity = ({ charity }) =>
   <div>
-    <h1>{charity.ein}</h1>
-    <RaisedButton onClick={this.handleOnClick} primary={true}>
-      Add to favorites
-    </RaisedButton>
+    <h1>{charity.charityName}</h1>
+    <h2>{charity.ein}</h2>
+    <Star />
   </div>;
 
 const mapStateToProps = (state, ownProps) => {

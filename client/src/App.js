@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch, NavLink } from 'react-router-do
 import Charities from './components/Charities';
 import Favorites from './components/Favorites';
 import Home from './components/Home';
+import Star from './components/Star';
 import './App.css';
 
 const Top = () =>
