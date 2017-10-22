@@ -1,6 +1,5 @@
 const initialState = {
-  ein: '',
-  length: 0
+  activated: false
 }
 
 export default (state = initialState, action) => {
@@ -16,3 +15,6 @@ export default (state = initialState, action) => {
       return state;
   }
 }
+
+case 'CREATE_FAVORITE':
+  return state.concat(action.favorite);

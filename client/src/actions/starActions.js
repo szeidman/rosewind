@@ -1,6 +1,4 @@
-import fetch from 'isomorphic-fetch';
-
-export function updateStar() {
+export function toggleStar() {
 
   return (dispatch) => {
   };
