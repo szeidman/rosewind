@@ -24,7 +24,7 @@ class Charities extends Component {
           <div>
             <h1>CHARITIES</h1>
             <RaisedButton onClick={this.handleOnClick} primary={true}>
-              Search
+              Load charities
             </RaisedButton>
             <CharityList charityState={charityState} />
           </div>

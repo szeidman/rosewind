@@ -2,7 +2,6 @@ import fetch from 'isomorphic-fetch';
 
 const charityNavId = process.env.REACT_APP_CHARITYNAV_ID;
 const charityNavKey = process.env.REACT_APP_CHARITYNAV_KEY;
-const ein = '42103907'
 
  export function fetchCharities() {
 
@@ -14,12 +13,12 @@ const ein = '42103907'
    };
  }
 
- export function fetchCharity() {
+ export function fetchCharity(ein) {
 
    return (dispatch) => {
-     dispatch({ type: 'LOADING_CHARITIES' });
-     return fetch(`https://api.data.charitynavigator.org/v2/Organizations/${ein}?app_id=${charityNavId}&app_key=${charityNavKey}`)
+     dispatch({ type: 'LOADING_CHARITY' });
+     return fetch("https://api.data.charitynavigator.org/v2/Organizations/"+ein+`?app_id=${charityNavId}&app_key=${charityNavKey}`)
        .then(response => response.json())
-       .then(json => dispatch({ type: 'FETCH_CHARITIES', payload: json }));
+       .then(json => dispatch({ type: 'FETCH_CHARITY', payload: json }));
    };
  }

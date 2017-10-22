@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 class Star extends Component {
   render() {
     return (
-      <div><h1>TEST</h1></div>
+      <div><h1>STAR</h1></div>
     )
   }
 }

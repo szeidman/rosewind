@@ -1,14 +1,14 @@
-const charitiesReducer = (state = {loading: false, charityResults: [], favoriteResults: []}, action) => {
+const charityReducer = (state = {loading: false, charityInfo: []}, action) => {
   switch (action.type) {
-    case 'LOADING_CHARITIES':
-      console.log('LOADING_CHARITIES')
-      return {loading: true, charityResults: []}
-    case 'FETCH_CHARITIES':
-      console.log('FETCH_CHARITIES' + state)
-      return {loading: false, charityResults: action.payload}
+    case 'LOADING_CHARITY':
+      console.log('LOADING_CHARITY')
+      return {loading: true, charityInfo: []}
+    case 'FETCH_CHARITY':
+      console.log('FETCH_CHARITY' + state )
+      return {loading: false, charityInfo: action.payload}
     default:
       return state;
     }
 };
 
-export default charitiesReducer;
+export default charityReducer;
