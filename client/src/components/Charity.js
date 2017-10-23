@@ -7,6 +7,7 @@ import CharityDetail from './CharityDetail';
 const Charity = ({ charity }) =>
   <div>
     <CharityDetail charityEIN={charity.ein} />
+    <Star />
   </div>;
 
 const mapStateToProps = (state, ownProps) => {

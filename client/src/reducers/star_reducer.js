@@ -5,12 +5,8 @@ const initialState = {
 const starReducer = (state = initialState, action) => {
 
   switch(action.type) {
-    case 'UPDATED_DATA':
-      return action.starData;
-
-    case 'RESET_STAR_STATE':
-      return initialState;
-
+    case 'TOGGLE_STAR':
+      return {activated: !state.activated};
     default:
       return state;
   }

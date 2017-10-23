@@ -2,17 +2,19 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions/starActions.js';
 import { bindActionCreators } from 'redux';
+import FlatButton from 'material-ui/FlatButton';
 
 class Star extends Component {
 
   handleOnClick = () => {
+    debugger;
     this.props.actions.toggleStar();
   };
 
   render() {
     return (
       <div>
-        <h1 onClick={this.handleOnClick}>STAR! {this.props.activated}</h1>
+        <FlatButton onClick={this.handleOnClick}>"Activated: " + {String(this.props.activated)}</FlatButton>
       </div>
     )
   }
