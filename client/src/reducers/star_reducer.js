@@ -2,7 +2,7 @@ const initialState = {
   activated: false
 }
 
-export default (state = initialState, action) => {
+const starReducer = (state = initialState, action) => {
 
   switch(action.type) {
     case 'UPDATED_DATA':
@@ -16,5 +16,4 @@ export default (state = initialState, action) => {
   }
 }
 
-case 'CREATE_FAVORITE':
-  return state.concat(action.favorite);
+export default starReducer;

@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 20171019132453) do
 
   create_table "charities", force: :cascade do |t|
-    t.integer "ein"
+    t.string "ein"
     t.string "charityName"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

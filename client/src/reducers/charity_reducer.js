@@ -3,7 +3,9 @@ const initialState = {
   charityInfo: {
     mailingAddress: [],
     cause: [],
-    currentRating: []
+    currentRating: {
+      ratingImage: []
+    }
   }
 };
 
@@ -17,9 +19,7 @@ const charityReducer = (state = initialState, action) => {
       }
     case 'FETCH_CHARITY':
       console.log('FETCH_CHARITY' + action.payload )
-      debugger;
       return {loading: false, charityInfo: action.payload}
-      debugger;
     default:
       return state;
     }

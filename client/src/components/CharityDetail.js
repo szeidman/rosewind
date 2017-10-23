@@ -20,7 +20,7 @@ class CharityDetail extends Component {
       <h2>{this.props.infoState['tagline']}</h2>
       <h2>{this.props.infoState['cause']['causeName']}</h2>
       <h2>{this.props.infoState['currentRating']['rating']}</h2>
-      <img src={this.props.infoState['currentRating']['small']} alt="test" height="42" width="42" />
+      <img src={this.props.infoState['currentRating']['ratingImage']['small']} alt="stars" />
       <h2>{this.props.infoState['currentRating']['score']}</h2>
       <h2>{this.props.infoState['mailingAddress']['streetAddress1']}</h2>
       <h2>{this.props.infoState['mailingAddress']['streetAddress2']}</h2>
