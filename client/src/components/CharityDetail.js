@@ -16,7 +16,20 @@ class CharityDetail extends Component {
   render() {
     return (
     <div>
-      <h1>SECOND SEARCH{this.props.infoState.charityName}</h1>
+      <h1>{this.props.infoState["charityName"]}</h1>
+      <h2>{this.props.infoState['tagline']}</h2>
+      <h2>{this.props.infoState['cause']['causeName']}</h2>
+      <h2>{this.props.infoState['currentRating']['rating']}</h2>
+      <img src={this.props.infoState['currentRating']['small']} alt="test" height="42" width="42" />
+      <h2>{this.props.infoState['currentRating']['score']}</h2>
+      <h2>{this.props.infoState['mailingAddress']['streetAddress1']}</h2>
+      <h2>{this.props.infoState['mailingAddress']['streetAddress2']}</h2>
+      <h2>{this.props.infoState['mailingAddress']['city']}</h2>
+      <h2>{this.props.infoState['mailingAddress']['stateOrProvince']}</h2>
+      <h2>{this.props.infoState['mailingAddress']['postalCode']}</h2>
+      <h2>{this.props.infoState['mission']}</h2>
+      <h2>{this.props.infoState['ein']}</h2>
+
     </div>
   )};
 
