@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import * as actions from '../actions/charityActions.js';
 import { bindActionCreators } from 'redux';
 import RaisedButton from 'material-ui/RaisedButton';
+import FlatButton from 'material-ui/FlatButton';
 
 
 class CharityDetail extends Component {
@@ -13,9 +14,20 @@ class CharityDetail extends Component {
     this.props.actions.fetchCharity(charityEIN);
   };
 
+  handleOnClick = () => {
+    const charityEIN = this.props.charityEIN;
+    if (this.props.favorited) {
+      this.props.actions.removeFavorite(charityEIN)
+    } else {
+      this.props.actions.makeFavorite(charityEIN)
+    }
+  };
+
   render() {
+    const buttonText = (this.props.favorited) ? "Remove from faves" : "Add to faves";
     return (
     <div>
+      <FlatButton onClick={this.handleOnClick.bind(this)}>{buttonText}</FlatButton>
       <h1>{this.props.infoState["charityName"]}</h1>
       <h2>{this.props.infoState['tagline']}</h2>
       <h2>{this.props.infoState['cause']['causeName']}</h2>
@@ -35,9 +47,11 @@ class CharityDetail extends Component {
 
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
+  const isFavorite = !!(state.favoritesReducer.favoriteResults.find(favorite => favorite.ein == ownProps.charityEIN));
   return {
     infoState: state.charityReducer.charityInfo,
+    favorited: isFavorite
   };
 }
 

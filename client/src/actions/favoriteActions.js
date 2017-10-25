@@ -35,7 +35,7 @@ const addFavorite = favorite => {
   }
 }
 
-const deleteFavorite = favorite => {
+export const deleteFavorite = favorite => {
   return {
     type: 'DELETE_FAVORITE',
     favorite

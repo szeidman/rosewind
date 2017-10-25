@@ -1,7 +1,11 @@
 export function toggleStar(ein) {
-  debugger;
-  return (dispatch) => {
-    dispatch({ type: 'TOGGLE_STAR' })
+  return (dispatch, getState) => {
+    if (getState().starReducer.activated) {
+      dispatch({ type: 'DELETE_STAR' })
+    } else {
+      dispatch({ type: 'ADD_STAR' })
+    };
+
   };
 
 }

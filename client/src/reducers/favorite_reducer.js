@@ -8,6 +8,7 @@ const favoritesReducer = (state = {loading: false, favoriteResults: []}, action)
         return {loading: false, favoriteResults: action.payload}
       case 'CREATE_FAVORITE':
         console.log('CREATE_FAVORITES' + state)
+        debugger;
         return state.concat(action.payload)
       case 'DELETE_FAVORITE':
         console.log('DELETE_FAVORITE')

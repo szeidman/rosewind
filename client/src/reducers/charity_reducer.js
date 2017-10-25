@@ -6,7 +6,8 @@ const initialState = {
     currentRating: {
       ratingImage: []
     }
-  }
+  },
+  isFavorite: false,
 };
 
 const charityReducer = (state = initialState, action) => {

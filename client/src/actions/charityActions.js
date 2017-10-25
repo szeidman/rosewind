@@ -1,4 +1,6 @@
 import fetch from 'isomorphic-fetch';
+import { createFavorite } from './favoriteActions';
+import { deleteFavorite } from './favoriteActions';
 
 const charityNavId = process.env.REACT_APP_CHARITYNAV_ID;
 const charityNavKey = process.env.REACT_APP_CHARITYNAV_KEY;
@@ -21,4 +23,18 @@ const charityNavKey = process.env.REACT_APP_CHARITYNAV_KEY;
        .then(response => response.json())
        .then(json => dispatch({ type: 'FETCH_CHARITY', payload: json }));
    };
+ }
+
+ export const makeFavorite = ein => {
+   return (dispatch) => {
+     dispatch(createFavorite(ein))
+   }
+
+ }
+
+ export const removeFavorite = ein => {
+   return (dispatch) => {
+     dispatch(deleteFavorite(ein))
+   }
+
  }

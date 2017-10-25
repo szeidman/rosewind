@@ -8,8 +8,7 @@ import starReducer from './star_reducer';
 const rootReducer = combineReducers({
   charitiesReducer,
   charityReducer,
-  favoritesReducer,
-  starReducer
+  favoritesReducer
 });
 
 export default rootReducer;

@@ -1,13 +1,10 @@
-const initialState = {
-  activated: false
-}
-
-const starReducer = (state = initialState, action) => {
+const starReducer = (state, action) => {
 
   switch(action.type) {
-    case 'TOGGLE_STAR':
-      debugger;
-      return {activated: !state.activated};
+    case 'ADD_STAR':
+      return {activated: true}
+    case 'DELETE_STAR':
+      return {activated: false}
     default:
       return state;
   }
