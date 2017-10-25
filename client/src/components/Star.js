@@ -7,14 +7,15 @@ import FlatButton from 'material-ui/FlatButton';
 class Star extends Component {
 
   handleOnClick = () => {
-    debugger;
-    this.props.actions.toggleStar();
+    const ein = this.props.ein
+    this.props.actions.toggleStar(ein);
   };
 
   render() {
+    const starness = (this.props.activated) ? "Remove from faves" : "Add to faves";
     return (
       <div>
-        <FlatButton onClick={this.handleOnClick}>"Activated: " + {String(this.props.activated)}</FlatButton>
+        <FlatButton onClick={this.handleOnClick}>{starness}</FlatButton>
       </div>
     )
   }
