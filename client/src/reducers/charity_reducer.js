@@ -6,8 +6,7 @@ const initialState = {
     currentRating: {
       ratingImage: []
     }
-  },
-  isFavorite: false,
+  }
 };
 
 const charityReducer = (state = initialState, action) => {
@@ -20,7 +19,7 @@ const charityReducer = (state = initialState, action) => {
       }
     case 'FETCH_CHARITY':
       console.log('FETCH_CHARITY' + action.payload )
-      return {loading: false, charityInfo: action.payload}
+      return {...state, loading: false, charityInfo: action.payload}
     default:
       return state;
     }
