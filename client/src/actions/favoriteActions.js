@@ -13,11 +13,11 @@ export const createFavorite = (favorite) => {
   return dispatch => {
     const request = {
       method: 'post',
-      headers: { 'Content-Type':'application/x-www-form-urlencoded'
+      headers: { 'Content-Type' : 'application/x-www-form-urlencoded'
       },
       body: favorite
     };
-    fetch("http://localhost:3001/api/v1/charities/", request)
+    fetch("http://localhost:3001/api/v1/charities", request)
       .then(response => response.json())
       .then(favorite => {
         dispatch(addFavorite(favorite))

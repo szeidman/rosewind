@@ -15,7 +15,7 @@ class CharityDetail extends Component {
   };
 
   handleOnClick = () => {
-    const favorite = `charityName=${this.props.infoState["charityName"]}&ein=${this.props.charityEIN}`;
+    const favorite = `ein=${this.props.charityEIN}&charityName=${this.props.infoState["charityName"]}`;
     if (this.props.favorited) {
       this.props.actions.removeFavorite(favorite)
     } else {
@@ -48,11 +48,10 @@ class CharityDetail extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const favorite = state.favoritesReducer.favoriteResults.find(favorite => favorite.ein == ownProps.charityEIN);
+  const isFavorite = !!(state.favoritesReducer.favoriteResults.find(favorite => favorite.ein == ownProps.charityEIN));
   return {
     infoState: state.charityReducer.charityInfo,
-    favorited: !!favorite,
-    favorite: favorite
+    favorited: isFavorite
   };
 }
 
