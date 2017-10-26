@@ -1,5 +1,3 @@
-import fetch from 'isomorphic-fetch';
-
 export function fetchFavorites() {
 
   return (dispatch) => {
@@ -11,15 +9,15 @@ export function fetchFavorites() {
 
 }
 
-export const createFavorite = favorite => {
+export const createFavorite = (favorite) => {
   return dispatch => {
-    return fetch('api/v1/charities', {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json'
+    const request = {
+      method: 'post',
+      headers: { 'Content-Type':'application/x-www-form-urlencoded'
       },
-      body: JSON.stringify({ favorite: favorite })
-    })
+      body: favorite
+    };
+    fetch("http://localhost:3001/api/v1/charities/", request)
       .then(response => response.json())
       .then(favorite => {
         dispatch(addFavorite(favorite))

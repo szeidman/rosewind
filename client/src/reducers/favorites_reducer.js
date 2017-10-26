@@ -1,4 +1,4 @@
-const favoritesReducer = (state = {loading: false, favoriteResults: []}, action) => {
+const favoritesReducer = (state = {loading: false, favoriteResults: [], favoriteInfo: []}, action) => {
   switch (action.type) {
       case 'LOADING_FAVORITES':
         console.log('LOADING_FAVORITES')
@@ -7,11 +7,9 @@ const favoritesReducer = (state = {loading: false, favoriteResults: []}, action)
         console.log('FETCH_FAVORITES' + state)
         return {loading: false, favoriteResults: action.payload}
       case 'CREATE_FAVORITE':
-        console.log('CREATE_FAVORITES' + state)
-        debugger;
-        return state.concat(action.payload)
+        return state.favoriteResults.concat(action.favorite);
       case 'DELETE_FAVORITE':
-        console.log('DELETE_FAVORITE')
+        return console.log('delete favorite');
     default:
       return state;
     }

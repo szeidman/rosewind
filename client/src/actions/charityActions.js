@@ -1,4 +1,3 @@
-import fetch from 'isomorphic-fetch';
 import { createFavorite } from './favoriteActions';
 import { deleteFavorite } from './favoriteActions';
 
@@ -25,9 +24,9 @@ const charityNavKey = process.env.REACT_APP_CHARITYNAV_KEY;
    };
  }
 
- export const makeFavorite = ein => {
+ export const makeFavorite = (favorite) => {
    return (dispatch) => {
-     dispatch(createFavorite(ein))
+     dispatch(createFavorite(favorite))
    }
 
  }

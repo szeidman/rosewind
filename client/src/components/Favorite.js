@@ -8,7 +8,6 @@ const Favorite = ({ favorite }) =>
   <div>
     <h1>{favorite.ein}</h1>
     <CharityDetail charityEIN={favorite.ein} />
-    <Star ein={favorite.ein}/>
   </div>;
 
 const mapStateToProps = (state, ownProps) => {

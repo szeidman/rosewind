@@ -17,6 +17,7 @@ module API
 
       # POST /charities
       def create
+        puts charity_params
         @charity = Charity.new(charity_params)
 
         if @charity.save
@@ -48,7 +49,7 @@ module API
 
         # Only allow a trusted parameter "white list" through.
         def charity_params
-          params.require(:charity).permit(:name, :tagline, :category, :cause, :id, :name, :tagline, :cause, :rating, :rating_image, :score, :street1, :street2, :city, :state, :zip, :mission, :ein)
+          params.permit(:ein, :charityName)
         end
     end
   end

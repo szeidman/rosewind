@@ -15,11 +15,11 @@ class CharityDetail extends Component {
   };
 
   handleOnClick = () => {
-    const charityEIN = this.props.charityEIN;
+    const favorite = `charityName=${this.props.infoState["charityName"]}&ein=${this.props.charityEIN}`;
     if (this.props.favorited) {
-      this.props.actions.removeFavorite(charityEIN)
+      this.props.actions.removeFavorite(favorite)
     } else {
-      this.props.actions.makeFavorite(charityEIN)
+      this.props.actions.makeFavorite(favorite)
     }
   };
 
@@ -48,10 +48,11 @@ class CharityDetail extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const isFavorite = !!(state.favoritesReducer.favoriteResults.find(favorite => favorite.ein == ownProps.charityEIN));
+  const favorite = state.favoritesReducer.favoriteResults.find(favorite => favorite.ein == ownProps.charityEIN);
   return {
     infoState: state.charityReducer.charityInfo,
-    favorited: isFavorite
+    favorited: !!favorite,
+    favorite: favorite
   };
 }
 
