@@ -9,6 +9,7 @@ import FlatButton from 'material-ui/FlatButton';
 class CharityDetail extends Component {
 
   componentWillMount() {
+    debugger;
     const charityEIN = this.props.charityEIN;
     this.props.actions.fetchCharity(charityEIN);
   };
@@ -18,7 +19,7 @@ class CharityDetail extends Component {
       const favorite = this.props.favorite;
       this.props.actions.removeFavorite(favorite)
     } else {
-      const favorite = `ein=${this.props.charityEIN}&charityName=${this.props.infoState["charityName"]}`;
+      const favorite = `ein=${this.props.infoState["ein"]}&charityName=${this.props.infoState["charityName"]}`;
       this.props.actions.makeFavorite(favorite)
     }
   };
