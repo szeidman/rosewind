@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import RaisedButton from 'material-ui/RaisedButton';
-import Star from './Star';
 import CharityDetail from './CharityDetail';
 
 const Charity = ({ charity }) =>

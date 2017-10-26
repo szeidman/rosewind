@@ -9,7 +9,7 @@ const FavoriteList = ({favoriteState}) => {
     <Link key={favorite.ein} to={`/favorites/${favorite.ein}`}>
       <Card>
         <CardHeader
-          title={favorite.favoriteName}
+          title={favorite.charityName}
           subtitle={favorite.ein}
         />
       </Card>

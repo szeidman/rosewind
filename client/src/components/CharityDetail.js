@@ -9,7 +9,6 @@ import FlatButton from 'material-ui/FlatButton';
 class CharityDetail extends Component {
 
   componentWillMount() {
-    debugger;
     const charityEIN = this.props.charityEIN;
     this.props.actions.fetchCharity(charityEIN);
   };
@@ -32,16 +31,14 @@ class CharityDetail extends Component {
       <h1>{this.props.infoState["charityName"]}</h1>
       <h2>{this.props.infoState['tagline']}</h2>
       <h2>{this.props.infoState['cause']['causeName']}</h2>
-      <h2>{this.props.infoState['currentRating']['rating']}</h2>
-      <img src={this.props.infoState['currentRating']['ratingImage']['small']} alt="stars" />
+      <h3>Rating:
+      <img src={this.props.infoState['currentRating']['ratingImage']['small']} alt="stars" /></h3>
       <h2>{this.props.infoState['currentRating']['score']}</h2>
-      <h2>{this.props.infoState['mailingAddress']['streetAddress1']}</h2>
-      <h2>{this.props.infoState['mailingAddress']['streetAddress2']}</h2>
-      <h2>{this.props.infoState['mailingAddress']['city']}</h2>
-      <h2>{this.props.infoState['mailingAddress']['stateOrProvince']}</h2>
-      <h2>{this.props.infoState['mailingAddress']['postalCode']}</h2>
-      <h2>{this.props.infoState['mission']}</h2>
-      <h2>{this.props.infoState['ein']}</h2>
+      <p>{this.props.infoState['mailingAddress']['streetAddress1']}</p>
+      <p>{this.props.infoState['mailingAddress']['streetAddress2']}</p>
+      <p>{this.props.infoState['mailingAddress']['city']}, {this.props.infoState['mailingAddress']['stateOrProvince']} {this.props.infoState['mailingAddress']['postalCode']}</p>
+
+      <p>{this.props.infoState['mission']}</p>
 
     </div>
   )};

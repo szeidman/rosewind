@@ -1,12 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Star from './Star';
 import CharityDetail from './CharityDetail';
 
 
 const Favorite = ({ favorite }) =>
   <div>
-    <h1>{favorite.ein}</h1>
     <CharityDetail charityEIN={favorite.ein} />
   </div>;
 

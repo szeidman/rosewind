@@ -10,7 +10,6 @@ export function fetchFavorites() {
 }
 
 export const createFavorite = (favorite) => {
-  debugger;
   return dispatch => {
     const request = {
       method: 'post',
