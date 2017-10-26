@@ -6,7 +6,6 @@ import { bindActionCreators } from 'redux';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 
-
 class CharityDetail extends Component {
 
   componentWillMount() {
@@ -15,10 +14,11 @@ class CharityDetail extends Component {
   };
 
   handleOnClick = () => {
-    const favorite = `ein=${this.props.charityEIN}&charityName=${this.props.infoState["charityName"]}`;
     if (this.props.favorited) {
+      const favorite = this.props.favorite;
       this.props.actions.removeFavorite(favorite)
     } else {
+      const favorite = `ein=${this.props.charityEIN}&charityName=${this.props.infoState["charityName"]}`;
       this.props.actions.makeFavorite(favorite)
     }
   };
@@ -47,11 +47,16 @@ class CharityDetail extends Component {
 
 }
 
+
+
 const mapStateToProps = (state, ownProps) => {
-  const isFavorite = !!(state.favoritesReducer.favoriteResults.find(favorite => favorite.ein == ownProps.charityEIN));
+  const findFavorite = state.favoritesReducer.favoriteResults.find(favorite => favorite.ein == ownProps.charityEIN);
+  const isFavorite = !!findFavorite;
+  const matchedFavorite = (isFavorite) ? findFavorite : ""
   return {
     infoState: state.charityReducer.charityInfo,
-    favorited: isFavorite
+    favorited: isFavorite,
+    favorite: matchedFavorite
   };
 }
 

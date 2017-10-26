@@ -26,6 +26,16 @@ export const createFavorite = (favorite) => {
   };
 }
 
+export const deleteFavorite = (favorite) => {
+  return dispatch => {
+    fetch(`http://localhost:3001/api/v1/charities/${favorite.id}`, {
+      method: 'delete'
+    }).then(response => {
+      dispatch(removeFavorite(favorite))
+    });
+  }
+}
+
 const addFavorite = favorite => {
   return {
     type: 'CREATE_FAVORITE',
@@ -33,7 +43,7 @@ const addFavorite = favorite => {
   }
 }
 
-export const deleteFavorite = favorite => {
+export const removeFavorite = favorite => {
   return {
     type: 'DELETE_FAVORITE',
     favorite

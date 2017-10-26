@@ -17,11 +17,9 @@ module API
 
       # POST /charities
       def create
-        puts charity_params
         @charity = Charity.new(charity_params)
-
         if @charity.save
-          render json: @charity, status: :created, location: @charity
+          render json: @charity
         else
           render json: @charity.errors, status: :unprocessable_entity
         end
