@@ -14,12 +14,18 @@ const charityReducer = (state = initialState, action) => {
     case 'LOADING_CHARITY':
       console.log('LOADING_CHARITY')
       return {
-        ...state,
         loading: true,
+        charityInfo: {
+          mailingAddress: [],
+          cause: [],
+          currentRating: {
+            ratingImage: []
+          }
+        }
       }
     case 'FETCH_CHARITY':
       console.log('FETCH_CHARITY' + action.payload )
-      return {...state, loading: false, charityInfo: action.payload}
+      return {loading: false, charityInfo: action.payload}
     default:
       return state;
     }

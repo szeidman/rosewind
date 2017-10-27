@@ -6,7 +6,7 @@ import FlatButton from 'material-ui/FlatButton';
 const FavoriteList = ({favoriteState}) => {
 
   const FavoriteRender = favoriteState.map(favorite =>
-    <Link key={favorite.ein} to={`/favorites/${favorite.ein}`}>
+    <Link key={favorite.id} to={`/favorites/${favorite.ein}`}>
       <Card>
         <CardHeader
           title={favorite.charityName}

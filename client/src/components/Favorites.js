@@ -18,10 +18,14 @@ class Favorites extends Component {
     const {match, favoriteState} = this.props;
     return (
     <div>
-      <h1>FAVORITES</h1>
-      <FavoriteList favoriteState={favoriteState} />
       <Switch>
         <Route path={`${match.url}/:ein`} component={Favorite} />
+        <Route exact path={`${match.url}`} render={() => (
+          <div>
+            <h1>FAVORITES</h1>
+            <FavoriteList favoriteState={favoriteState} />
+          </div>
+        )} />
       </Switch>
     </div>
   )};

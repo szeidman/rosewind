@@ -1,4 +1,4 @@
-const favoritesReducer = (state = {loading: false, favoriteResults: [], favoriteInfo: []}, action) => {
+const favoritesReducer = (state = {loading: false, favoriteResults: []}, action) => {
   switch (action.type) {
       case 'LOADING_FAVORITES':
         console.log('LOADING_FAVORITES')
