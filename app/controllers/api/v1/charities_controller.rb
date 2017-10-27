@@ -1,7 +1,6 @@
 module API
   module V1
     class CharitiesController < ApplicationController
-      include Secured
 
       before_action :set_charity, only: [:show, :update, :destroy]
       # GET /charities

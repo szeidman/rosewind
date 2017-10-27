@@ -5,10 +5,11 @@ import * as actions from '../actions/charityActions.js';
 import { bindActionCreators } from 'redux';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
+import CharityCard from './CharityCard';
 
 class CharityDetail extends Component {
 
-  componentWillMount() {
+  componentDidMount() {
     const charityEIN = this.props.charityEIN;
     this.props.actions.fetchCharity(charityEIN);
   };
@@ -27,19 +28,8 @@ class CharityDetail extends Component {
     const buttonText = (this.props.favorited) ? "Remove from faves" : "Add to faves";
     return (
     <div>
-      <FlatButton onClick={this.handleOnClick.bind(this)}>{buttonText}</FlatButton>
-      <h1>{this.props.infoState["charityName"]}</h1>
-      <h2>{this.props.infoState['tagline']}</h2>
-      <h2>{this.props.infoState['cause']['causeName']}</h2>
-      <h3>Rating:
-      <img src={this.props.infoState['currentRating']['ratingImage']['small']} alt="stars" /></h3>
-      <h2>{this.props.infoState['currentRating']['score']}</h2>
-      <p>{this.props.infoState['mailingAddress']['streetAddress1']}</p>
-      <p>{this.props.infoState['mailingAddress']['streetAddress2']}</p>
-      <p>{this.props.infoState['mailingAddress']['city']}, {this.props.infoState['mailingAddress']['stateOrProvince']} {this.props.infoState['mailingAddress']['postalCode']}</p>
-
-      <p>{this.props.infoState['mission']}</p>
-
+      <FlatButton onClick={this.handleOnClick}>{buttonText}</FlatButton>
+      <CharityCard info={this.props.infoState} />
     </div>
   )};
 
