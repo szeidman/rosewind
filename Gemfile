@@ -8,6 +8,8 @@ end
 #JWT handler
 gem 'knock'
 
+gem 'jwt'
+
 gem "active_model_serializers"
 
 gem 'httparty'

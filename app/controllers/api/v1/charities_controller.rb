@@ -1,9 +1,9 @@
 module API
   module V1
     class CharitiesController < ApplicationController
-      before_action :set_charity, only: [:show, :update, :destroy]
-      before_action :authenticate_user
+      include Secured
 
+      before_action :set_charity, only: [:show, :update, :destroy]
       # GET /charities
       def index
         @charities = Charity.all
