@@ -6,6 +6,7 @@ import Favorite from './Favorite';
 import * as actions from '../actions/favoriteActions.js';
 import { bindActionCreators } from 'redux';
 import RaisedButton from 'material-ui/RaisedButton';
+import CircularProgress from 'material-ui/CircularProgress';
 
 
 class Favorites extends Component {
@@ -16,6 +17,12 @@ class Favorites extends Component {
 
   render() {
     const {match, favoriteState} = this.props;
+    const loading = this.props.loading;
+
+    if (loading) {
+      return (<div><CircularProgress size={200} thickness={10} /></div>)
+    }
+
     return (
     <div>
       <Switch>
@@ -35,6 +42,7 @@ class Favorites extends Component {
 const mapStateToProps = (state) => {
   return {
     favoriteState: state.favoritesReducer.favoriteResults,
+    loading: state.favoritesReducer.loading
   };
 }
 
