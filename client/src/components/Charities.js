@@ -8,11 +8,12 @@ import { bindActionCreators } from 'redux';
 import RaisedButton from 'material-ui/RaisedButton';
 import CircularProgress from 'material-ui/CircularProgress';
 
+const codeState = 'NJ';
 
 class Charities extends Component {
 
   handleOnClick = () => {
-    this.props.actions.fetchCharities();
+    this.props.actions.fetchCharities(codeState);
   };
 
   render() {

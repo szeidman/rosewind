@@ -34,6 +34,7 @@ class CharityDetail extends Component {
     if (loading) {
       return (<div><CircularProgress size={200} thickness={10} /></div>)
     }
+
     return (
     <div>
       <IconButton

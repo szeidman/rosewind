@@ -3,12 +3,12 @@
 .charitycard {
   float: center;
   background: darkcyan !important;
-  width: 44% !important;
+  max-width: 400px !important;
   font-family: 'Libre Franklin', sans-serif !important;
 }
 
 .cardImage {
-  filter: blur(13px);
+  filter: blur(4px);
   float: center;
 }
 
