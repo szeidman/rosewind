@@ -32,7 +32,7 @@ class CharityDetail extends Component {
     const loading = this.props.loading;
 
     if (loading) {
-      return (<div><CircularProgress size={200} thickness={12} /></div>)
+      return (<div><CircularProgress size={200} thickness={10} /></div>)
     }
     return (
     <div>

@@ -6,6 +6,7 @@ import Charity from './Charity';
 import * as actions from '../actions/charityActions.js';
 import { bindActionCreators } from 'redux';
 import RaisedButton from 'material-ui/RaisedButton';
+import CircularProgress from 'material-ui/CircularProgress';
 
 
 class Charities extends Component {
@@ -16,6 +17,12 @@ class Charities extends Component {
 
   render() {
     const {match, charityState} = this.props;
+    const loading = this.props.loading;
+
+    if (loading) {
+      return (<div><CircularProgress size={200} thickness={10} /></div>)
+    }
+
     return (
     <div>
       <Switch>
@@ -38,6 +45,7 @@ class Charities extends Component {
 const mapStateToProps = (state) => {
   return {
     charityState: state.charitiesReducer.charityResults,
+    loading: state.charitiesReducer.loading
   };
 }
 
