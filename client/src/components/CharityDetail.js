@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 import * as actions from '../actions/charityActions.js';
 import { bindActionCreators } from 'redux';
-import RaisedButton from 'material-ui/RaisedButton';
-import FlatButton from 'material-ui/FlatButton';
 import CharityCard from './CharityCard';
+import IconButton from 'material-ui/IconButton';
+import ActionFavorite from 'material-ui/svg-icons/action/favorite';
+import {blue300, blue600, blue900} from 'material-ui/styles/colors';
 
 class CharityDetail extends Component {
 
@@ -25,10 +26,21 @@ class CharityDetail extends Component {
   };
 
   render() {
-    const buttonText = (this.props.favorited) ? "Remove from faves" : "Add to faves";
+    const buttonText = (this.props.favorited) ? "Remove from favorites" : "Add to favorites";
+    const buttonColor = (this.props.favorited) ? blue900 : blue300;
     return (
     <div>
-      <FlatButton onClick={this.handleOnClick}>{buttonText}</FlatButton>
+      <IconButton
+        tooltip={buttonText}
+        touch={true}
+        tooltipPosition="bottom-right"
+        onClick={this.handleOnClick}
+      >
+        <ActionFavorite
+          hoverColor={blue600}
+          color={buttonColor}
+        />
+      </IconButton>
       <CharityCard info={this.props.infoState} />
     </div>
   )};
