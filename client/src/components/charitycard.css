@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css?family=Libre+Franklin');
+
+.charitycard {
+  float: center;
+  background: darkcyan !important;
+  width: 44% !important;
+  font-family: 'Libre Franklin', sans-serif !important;
+}
+
+.cardImage {
+  filter: blur(13px);
+  float: center;
+}
+
+.address p {
+  line-height: 30% !important;
+}

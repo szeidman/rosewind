@@ -22,7 +22,7 @@ class Charities extends Component {
         <Route path={`${match.url}/:ein`} component={Charity} />
         <Route exact path={`${match.url}`} render={() => (
           <div>
-            <h1>CHARITIES</h1>
+            <h1>Charities</h1>
             <RaisedButton onClick={this.handleOnClick} primary={true}>
               Load charities
             </RaisedButton>

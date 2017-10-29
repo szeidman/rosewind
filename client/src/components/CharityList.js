@@ -7,7 +7,7 @@ const CharityList = ({charityState}) => {
 
   const CharityRender = charityState.map(charity =>
     <Link key={charity.ein} to={`/charities/${charity.ein}`}>
-      <Card>
+      <Card className="charityrender">
         <CardHeader
           title={charity.charityName}
           subtitle={charity.ein}

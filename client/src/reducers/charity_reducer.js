@@ -2,6 +2,7 @@ const initialState = {
   loading: false,
   charityInfo: {
     mailingAddress: [],
+    category: [],
     cause: [],
     currentRating: {
       ratingImage: []
@@ -17,6 +18,7 @@ const charityReducer = (state = initialState, action) => {
         loading: true,
         charityInfo: {
           mailingAddress: [],
+          category: [],
           cause: [],
           currentRating: {
             ratingImage: []

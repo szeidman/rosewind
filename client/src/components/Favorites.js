@@ -22,7 +22,7 @@ class Favorites extends Component {
         <Route path={`${match.url}/:ein`} component={Favorite} />
         <Route exact path={`${match.url}`} render={() => (
           <div>
-            <h1>FAVORITES</h1>
+            <h1>Favorites</h1>
             <FavoriteList favoriteState={favoriteState} />
           </div>
         )} />
