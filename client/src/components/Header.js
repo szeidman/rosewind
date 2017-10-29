@@ -8,13 +8,13 @@ import FontIcon from 'material-ui/FontIcon';
 import ActionFavorite from 'material-ui/svg-icons/action/favorite';
 import ActionHome from 'material-ui/svg-icons/action/home';
 import SocialPublic from 'material-ui/svg-icons/social/public';
-
+import {cyan100} from 'material-ui/styles/colors';
 
 
 const Header = () =>
   <Router>
     <div>
-      <Tabs style>
+      <Tabs inkBarStyle={{backgroundColor: cyan100}}>
        <Tab
         label="Home"
         containerElement={<NavLink exact to="/"/>}

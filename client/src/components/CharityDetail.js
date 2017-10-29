@@ -42,6 +42,7 @@ class CharityDetail extends Component {
         touch={true}
         tooltipPosition="bottom-right"
         onClick={this.handleOnClick}
+        className="charityheart"
       >
         <ActionFavorite
           hoverColor={blue600}
