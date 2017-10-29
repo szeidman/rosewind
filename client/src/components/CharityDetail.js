@@ -7,6 +7,7 @@ import CharityCard from './CharityCard';
 import IconButton from 'material-ui/IconButton';
 import ActionFavorite from 'material-ui/svg-icons/action/favorite';
 import {blue300, blue600, blue900} from 'material-ui/styles/colors';
+import CircularProgress from 'material-ui/CircularProgress';
 
 class CharityDetail extends Component {
 
@@ -28,6 +29,11 @@ class CharityDetail extends Component {
   render() {
     const buttonText = (this.props.favorited) ? "Remove from favorites" : "Add to favorites";
     const buttonColor = (this.props.favorited) ? blue900 : blue300;
+    const loading = this.props.loading;
+
+    if (loading) {
+      return (<div><CircularProgress size={200} thickness={12} /></div>)
+    }
     return (
     <div>
       <IconButton
@@ -56,7 +62,8 @@ const mapStateToProps = (state, ownProps) => {
   return {
     infoState: state.charityReducer.charityInfo,
     favorited: isFavorite,
-    favorite: matchedFavorite
+    favorite: matchedFavorite,
+    loading: state.charityReducer.loading
   };
 }
 
