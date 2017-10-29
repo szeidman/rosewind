@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import {cyan300} from 'material-ui/styles/colors';
+import {cyan300, cyan900} from 'material-ui/styles/colors';
 import './index.css';
 import App from './App';
 import { Provider } from 'react-redux';

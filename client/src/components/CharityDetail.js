@@ -11,7 +11,7 @@ import {blue300, blue600, blue900} from 'material-ui/styles/colors';
 class CharityDetail extends Component {
 
   componentDidMount() {
-    const charityEIN = this.props.charityEIN;
+    const charityEIN = window.location.pathname.split('/')[2];
     this.props.actions.fetchCharity(charityEIN);
   };
 

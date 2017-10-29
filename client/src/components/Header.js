@@ -1,21 +1,24 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch, NavLink } from 'react-router-dom';
-import Charities from './components/Charities';
-import Favorites from './components/Favorites';
-import Home from './components/Home';
+import Charities from './Charities';
+import Favorites from './Favorites';
+import Home from './Home';
+
 
 
 const Header = () =>
   <Router>
     <div>
-      <NavLink style={{ marginRight: '10px' }} to="/">Home</NavLink>
-      <NavLink style={{ marginRight: '10px' }} to="/charities">Charities</NavLink>
-      <NavLink style={{ marginRight: '10px' }} to="/favorites">Favorites</NavLink>
+      <NavLink exact activeStyle={{color: 'red'}} style={{ marginRight: '10px' }} to="/">Home</NavLink>
+      <NavLink activeStyle={{color: 'red'}} style={{ marginRight: '10px' }} to="/charities">Charities</NavLink>
+      <NavLink activeStyle={{color: 'red'}} style={{ marginRight: '10px' }} to="/favorites">Favorites</NavLink>
       <Switch>
-        <Route exact path="/" compenent={Home} />
+        <Route exact path="/" component={Home} />
         <Route path="/charities" component={Charities} />
         <Route path="/favorites" component={Favorites} />
       </Switch>
     </div>
   </Router>
 ;
+
+export default Header;
