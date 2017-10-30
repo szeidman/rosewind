@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch, NavLink } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, NavLink, Link } from 'react-router-dom';
 import Charities from './Charities';
 import Favorites from './Favorites';
 import Home from './Home';
@@ -10,24 +10,23 @@ import ActionHome from 'material-ui/svg-icons/action/home';
 import SocialPublic from 'material-ui/svg-icons/social/public';
 import {cyan100} from 'material-ui/styles/colors';
 
-
 const Header = () =>
   <Router>
     <div>
       <Tabs inkBarStyle={{backgroundColor: cyan100}}>
        <Tab
         label="Home"
-        containerElement={<NavLink exact to="/"/>}
+        containerElement={<Link to="/"/>}
         icon={<ActionHome />}
         />
        <Tab
         label="Charities"
-        containerElement={<NavLink to="/charities"/>}
+        containerElement={<Link to="/charities"/>}
         icon={<SocialPublic />}
        />
        <Tab
           label="Favorites"
-          containerElement={<NavLink to="/favorites"/>}
+          containerElement={<Link to="/favorites"/>}
           icon={<ActionFavorite />}
        />
       </Tabs>
