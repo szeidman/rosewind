@@ -1,3 +1,6 @@
+import { resetFavoriteForm } from './favoriteFormActions';
+import { toggleForm } from './charityActions';
+
 export function fetchFavorites() {
 
   return (dispatch) => {
@@ -21,6 +24,9 @@ export const createFavorite = (favorite) => {
       .then(response => response.json())
       .then(favorite => {
         dispatch(addFavorite(favorite))
+        dispatch(resetFavoriteForm())
+        dispatch(toggleForm())
+        dispatch(fetchFavorite(favorite))
       })
       .catch(error => console.log(error))
   };
@@ -48,4 +54,15 @@ export const removeFavorite = favorite => {
     type: 'DELETE_FAVORITE',
     favorite
   }
+}
+
+export function fetchFavorite(favorite) {
+  debugger;
+  return (dispatch) => {
+    dispatch({ type: 'LOADING_FAVORITE' });
+    return fetch(`http://localhost:3001/api/v1/charities/${favorite.id}`)
+      .then(response => response.json())
+      .then(json => dispatch({ type: 'FETCH_FAVORITE', payload: json }));
+  };
+
 }
