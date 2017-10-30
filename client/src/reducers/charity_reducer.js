@@ -7,7 +7,8 @@ const initialState = {
     currentRating: {
       ratingImage: []
     }
-  }
+  },
+  viewForm: false
 };
 
 const charityReducer = (state = initialState, action) => {
@@ -15,6 +16,7 @@ const charityReducer = (state = initialState, action) => {
     case 'LOADING_CHARITY':
       console.log('LOADING_CHARITY')
       return {
+        ...state,
         loading: true,
         charityInfo: {
           mailingAddress: [],
@@ -27,7 +29,12 @@ const charityReducer = (state = initialState, action) => {
       }
     case 'FETCH_CHARITY':
       console.log('FETCH_CHARITY' + action.payload )
-      return {loading: false, charityInfo: action.payload}
+      return {...state, loading: false, charityInfo: action.payload}
+    case 'TOGGLE_FORM':
+      return {
+        ...state,
+        viewForm: true
+      }
     default:
       return state;
     }

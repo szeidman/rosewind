@@ -5,7 +5,6 @@ import FavoriteList from '../components/FavoriteList';
 import Favorite from './Favorite';
 import * as actions from '../actions/favoriteActions.js';
 import { bindActionCreators } from 'redux';
-import RaisedButton from 'material-ui/RaisedButton';
 import CircularProgress from 'material-ui/CircularProgress';
 
 

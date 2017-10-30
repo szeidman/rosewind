@@ -1,10 +1,9 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch, NavLink, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import Charities from './Charities';
 import Favorites from './Favorites';
 import Home from './Home';
 import {Tabs, Tab} from 'material-ui/Tabs';
-import FontIcon from 'material-ui/FontIcon';
 import ActionFavorite from 'material-ui/svg-icons/action/favorite';
 import ActionHome from 'material-ui/svg-icons/action/home';
 import SocialPublic from 'material-ui/svg-icons/social/public';

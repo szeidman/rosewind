@@ -1,36 +1,32 @@
 const initialState = {
   loading: false,
   favoriteInfo: {
-    mailingAddress: [],
-    category: [],
-    cause: [],
-    currentRating: {
-      ratingImage: []
+    charityName: '',
+    ein: '',
+    notes: ''
     }
   }
 };
 
-const charityReducer = (state = initialState, action) => {
+const favoriteReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'LOADING_CHARITY':
-      console.log('LOADING_CHARITY')
+    case 'LOADING_FAVORITE':
+      console.log('LOADING_FAVORITE')
       return {
         loading: true,
-        charityInfo: {
-          mailingAddress: [],
-          category: [],
-          cause: [],
-          currentRating: {
-            ratingImage: []
+        favoriteInfo: {
+          charityName: '',
+          ein: '',
+          notes: ''
           }
         }
       }
-    case 'FETCH_CHARITY':
-      console.log('FETCH_CHARITY' + action.payload )
-      return {loading: false, charityInfo: action.payload}
+    case 'FETCH_FAVORITE':
+      console.log('FETCH_FAVORITE' + action.payload )
+      return {loading: false, favoriteInfo: action.payload}
     default:
       return state;
     }
 };
 
-export default charityReducer;
+export default favoriteReducer;

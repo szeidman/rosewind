@@ -37,3 +37,9 @@ const charityNavKey = process.env.REACT_APP_CHARITYNAV_KEY;
    }
 
  }
+
+ export const toggleForm = () => {
+  return (dispatch) => {
+    dispatch({type: 'TOGGLE_FORM'});
+  }
+}

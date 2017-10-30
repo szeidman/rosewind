@@ -13,7 +13,7 @@ export const createFavorite = (favorite) => {
   return dispatch => {
     const request = {
       method: 'post',
-      headers: { 'Content-Type' : 'application/x-www-form-urlencoded'
+      headers: { 'Content-Type' : 'application/json'
       },
       body: favorite
     };

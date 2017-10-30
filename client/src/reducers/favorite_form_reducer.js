@@ -7,9 +7,9 @@ const initialState = {
 export default (state = initialState, action) => {
   switch(action.type) {
     case 'UPDATE_FAVORITE_DATA':
-      return console.log('update!')
+      return action.favoriteFormData;
     case 'RESET_FAVORITE_FORM':
-      return initialSate;
+      return initialState;
     default:
       return state;
   }

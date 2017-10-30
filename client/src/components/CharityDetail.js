@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Route, Switch } from 'react-router-dom';
 import * as actions from '../actions/charityActions.js';
 import { bindActionCreators } from 'redux';
 import CharityCard from './CharityCard';
+import FavoriteForm from './FavoriteForm';
 import IconButton from 'material-ui/IconButton';
 import ActionFavorite from 'material-ui/svg-icons/action/favorite';
 import {blue300, blue600, blue900} from 'material-ui/styles/colors';
@@ -21,8 +21,7 @@ class CharityDetail extends Component {
       const favorite = this.props.favorite;
       this.props.actions.removeFavorite(favorite)
     } else {
-      const favorite = `ein=${this.props.infoState["ein"]}&charityName=${this.props.infoState["charityName"]}`;
-      this.props.actions.makeFavorite(favorite)
+      this.props.actions.toggleForm();
     }
   };
 
@@ -30,9 +29,22 @@ class CharityDetail extends Component {
     const buttonText = (this.props.favorited) ? "Remove from favorites" : "Add to favorites";
     const buttonColor = (this.props.favorited) ? blue900 : blue300;
     const loading = this.props.loading;
+    const viewForm = this.props.viewForm;
 
     if (loading) {
       return (<div><CircularProgress size={200} thickness={10} /></div>)
+    }
+
+    if (viewForm) {
+      return (
+        <div>
+          <FavoriteForm
+            charityName={this.props.infoState['charityName']}
+            ein={this.props.infoState['ein']}
+            notes={''}
+          />
+        </div>
+      )
     }
 
     return (
@@ -65,7 +77,8 @@ const mapStateToProps = (state, ownProps) => {
     infoState: state.charityReducer.charityInfo,
     favorited: isFavorite,
     favorite: matchedFavorite,
-    loading: state.charityReducer.loading
+    loading: state.charityReducer.loading,
+    viewForm: state.charityReducer.viewForm
   };
 }
 

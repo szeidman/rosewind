@@ -1,11 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import RaisedButton from 'material-ui/RaisedButton';
 import CharityDetail from './CharityDetail';
 
 const Charity = ({ charity }) =>
   <div>
-    <CharityDetail charityEIN={charity.ein} />
+    <CharityDetail charityEIN={charity.ein} charity={charity} />
   </div>;
 
 const mapStateToProps = (state, ownProps) => {
