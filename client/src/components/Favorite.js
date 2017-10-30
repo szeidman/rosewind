@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import CharityDetail from './CharityDetail';
 import './favorite.css';
 
+
 const Favorite = ({ favorite }) =>
   <div>
     <CharityDetail charityEIN={favorite.ein} />
@@ -10,6 +11,7 @@ const Favorite = ({ favorite }) =>
       "Yo I'm a favorite."
       <p>{favorite.ein}</p>
       <p>{favorite.charityName}</p>
+      <p>{favorite.notes}</p>
     </div>
   </div>;
 

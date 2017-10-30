@@ -20,7 +20,6 @@ const CharityCard = ({info}) => {
           </div>
           <br />
           <p>{info['mission']}</p>
-          <br />
           <h3>
             <a href={info['charityNavigatorURL']}>
               <img src="https://www.charitynavigator.org/_gfx_/promo/CN_88x31.gif" alt="" />
