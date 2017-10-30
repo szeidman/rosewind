@@ -32,20 +32,20 @@ export const createFavorite = (favorite) => {
 }
 
 export const updateFavorite = (favorite, favoriteID) => {
-  debugger;
+  const updateURI = "http://localhost:3001/api/v1/charities/"+favoriteID;
   return dispatch => {
     const request = {
-      method: 'put',
-      headers: { 'Content-Type' : 'application/json'
+      method: 'PUT',
+      headers: {
+        'Content-Type' : 'application/json'
       },
       body: JSON.stringify({ charity: favorite })
     };
-    fetch("http://localhost:3001/api/v1/charities/"+favoriteID, request)
+    fetch(updateURI, request)
       .then(response => response.json())
       .then(favorite => {
-        dispatch(editFavorite(favorite))
-        dispatch(resetFavoriteForm())
         dispatch(fetchFavorite(favorite))
+        dispatch(resetFavoriteForm())
       })
       .catch(error => console.log(error))
   };
