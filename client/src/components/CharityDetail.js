@@ -21,7 +21,10 @@ class CharityDetail extends Component {
       const favorite = this.props.favorite;
       this.props.actions.removeFavorite(favorite)
     } else {
-      this.props.actions.toggleForm();
+      const { charityName, ein, notes } = this.props.favoriteFormData;
+      this.props.favoriteFormData['charityName'] = this.props.infoState['charityName'];
+      this.props.favoriteFormData['ein'] = this.props.infoState['ein'];
+      this.props.actions.addFavorite(this.props.favoriteFormData);
     }
   };
 
@@ -33,18 +36,6 @@ class CharityDetail extends Component {
 
     if (loading) {
       return (<div><CircularProgress size={200} thickness={10} /></div>)
-    }
-
-    if (viewForm) {
-      return (
-        <div>
-          <FavoriteForm
-            charityName={this.props.infoState['charityName']}
-            ein={this.props.infoState['ein']}
-            notes={''}
-          />
-        </div>
-      )
     }
 
     return (
@@ -67,8 +58,6 @@ class CharityDetail extends Component {
 
 }
 
-
-
 const mapStateToProps = (state, ownProps) => {
   const findFavorite = state.favoritesReducer.favoriteResults.find(favorite => favorite.ein == ownProps.charityEIN);
   const isFavorite = !!findFavorite;
@@ -78,7 +67,7 @@ const mapStateToProps = (state, ownProps) => {
     favorited: isFavorite,
     favorite: matchedFavorite,
     loading: state.charityReducer.loading,
-    viewForm: state.charityReducer.viewForm
+    favoriteFormData: state.favoriteFormReducer
   };
 }
 

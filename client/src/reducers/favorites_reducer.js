@@ -11,6 +11,8 @@ const favoritesReducer = (state = {loading: false, favoriteResults: []}, action)
       case 'DELETE_FAVORITE':
         const favoriteResults = state.favoriteResults.filter(fave => fave.ein !== action.favorite.ein);
         return {favoriteResults}
+      case 'EDIT_FAVORITE':
+        return [...state.favoriteResults.filter(favorite => favorite.id !== action.favorite.id), Object.assign({}, action.favorite)];
     default:
       return state;
     }

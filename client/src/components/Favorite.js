@@ -2,16 +2,22 @@ import React from 'react';
 import { connect } from 'react-redux';
 import CharityDetail from './CharityDetail';
 import './favorite.css';
+import FavoriteForm from './FavoriteForm';
 
 
 const Favorite = ({ favorite }) =>
   <div>
     <CharityDetail charityEIN={favorite.ein} />
     <div className="favoriteInfo">
-      "Yo I'm a favorite."
       <p>{favorite.ein}</p>
-      <p>{favorite.charityName}</p>
+      <p>{favorite.charityName} was added to your favorites on {favorite.created_at}.</p>
       <p>{favorite.notes}</p>
+      <FavoriteForm
+        charityName={favorite.charityName}
+        ein={favorite.ein}
+        notes={favorite.notes}
+        favoriteID={favorite.id}
+      />
     </div>
   </div>;
 

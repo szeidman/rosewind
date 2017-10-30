@@ -4,7 +4,7 @@ import CharityDetail from './CharityDetail';
 
 const Charity = ({ charity }) =>
   <div>
-    <CharityDetail charityEIN={charity.ein} charity={charity} />
+    <CharityDetail charityEIN={charity.ein} />
   </div>;
 
 const mapStateToProps = (state, ownProps) => {

@@ -25,7 +25,26 @@ export const createFavorite = (favorite) => {
       .then(favorite => {
         dispatch(addFavorite(favorite))
         dispatch(resetFavoriteForm())
-        dispatch(toggleForm())
+        dispatch(fetchFavorite(favorite))
+      })
+      .catch(error => console.log(error))
+  };
+}
+
+export const updateFavorite = (favorite, favoriteID) => {
+  debugger;
+  return dispatch => {
+    const request = {
+      method: 'put',
+      headers: { 'Content-Type' : 'application/json'
+      },
+      body: JSON.stringify({ charity: favorite })
+    };
+    fetch("http://localhost:3001/api/v1/charities/"+favoriteID, request)
+      .then(response => response.json())
+      .then(favorite => {
+        dispatch(editFavorite(favorite))
+        dispatch(resetFavoriteForm())
         dispatch(fetchFavorite(favorite))
       })
       .catch(error => console.log(error))
@@ -49,6 +68,13 @@ const addFavorite = favorite => {
   }
 }
 
+const editFavorite = favorite => {
+  return {
+    type: 'EDIT_FAVORITE',
+    favorite
+  }
+}
+
 export const removeFavorite = favorite => {
   return {
     type: 'DELETE_FAVORITE',
@@ -57,7 +83,6 @@ export const removeFavorite = favorite => {
 }
 
 export function fetchFavorite(favorite) {
-  debugger;
   return (dispatch) => {
     dispatch({ type: 'LOADING_FAVORITE' });
     return fetch(`http://localhost:3001/api/v1/charities/${favorite.id}`)

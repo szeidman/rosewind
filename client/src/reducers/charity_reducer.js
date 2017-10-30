@@ -31,7 +31,6 @@ const charityReducer = (state = initialState, action) => {
       console.log('FETCH_CHARITY' + action.payload )
       return {...state, loading: false, charityInfo: action.payload}
     case 'TOGGLE_FORM':
-      debugger;
       return {
         ...state,
         viewForm: !state.viewForm

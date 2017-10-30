@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { updateFavoriteFormData } from '../actions/favoriteFormActions';
 import { bindActionCreators } from 'redux';
-import { createFavorite } from '../actions/favoriteActions';
+import { addFavorite } from '../actions/charityActions';
+import { updateFavorite } from '../actions/favoriteActions';
 
 class FavoriteForm extends Component {
 
@@ -14,7 +15,7 @@ class FavoriteForm extends Component {
 
   handleOnSubmit = event => {
     event.preventDefault();
-    this.props.createFavorite(this.props.favoriteFormData);
+    this.props.updateFavorite(this.props.favoriteFormData, this.props.favoriteID);
   }
 
   render() {
@@ -24,18 +25,7 @@ class FavoriteForm extends Component {
 
     return (
       <div>
-        <h2>Add {this.props.charityName} to favorites?</h2>
         <form onSubmit={this.handleOnSubmit.bind(this)}>
-          <input
-            type="hidden"
-            name="charityName"
-            value={charityName}
-          />
-          <input
-            type="hidden"
-            name="ein"
-            value={ein}
-          />
           <label htmlFor="notes">Notes:</label>
           <input
             type="text-field"
@@ -59,7 +49,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     updateFavoriteFormData,
-    createFavorite
+    addFavorite,
+    updateFavorite
   }, dispatch);
 }
 

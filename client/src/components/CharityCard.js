@@ -7,12 +7,12 @@ const CharityCard = ({info}) => {
     <div>
       <Card className="charitycard">
         <CardMedia
-          overlay={<CardTitle title={info["charityName"]} subtitle={info['cause']['causeName']} />}
+          overlay={<CardTitle title={info["charityName"]} subtitle={info['tagLine']} />}
         >
           <img className="cardImage" src={info['cause']['image']}  alt="" />
         </CardMedia>
         <CardText>
-          <p>{info['tagline']}</p>
+          <p>{info['cause']['causeName']}</p>
           <div className="address">
           <p>{info['mailingAddress']['streetAddress1']}</p>
           <p>{info['mailingAddress']['streetAddress2']}</p>

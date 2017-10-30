@@ -24,7 +24,7 @@ const charityNavKey = process.env.REACT_APP_CHARITYNAV_KEY;
    };
  }
 
- export const makeFavorite = (favorite) => {
+ export const addFavorite = (favorite) => {
    return (dispatch) => {
      dispatch(createFavorite(favorite))
    }
