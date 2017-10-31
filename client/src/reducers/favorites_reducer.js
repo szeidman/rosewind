@@ -1,5 +1,3 @@
-import {browserHistory} from 'react-router';
-
 const favoritesReducer = (state = {loading: false, favoriteResults: []}, action) => {
   switch (action.type) {
       case 'LOADING_FAVORITES':
@@ -9,10 +7,8 @@ const favoritesReducer = (state = {loading: false, favoriteResults: []}, action)
         console.log('FETCH_FAVORITES' + state)
         return {...state, loading: false, favoriteResults: action.payload}
       case 'CREATE_FAVORITE':
-        browserHistory.push(`/favorites/${action.favorite.ein}`);
         return {...state, favoriteResults: state.favoriteResults.concat(action.favorite)};
       case 'DELETE_FAVORITE':
-        browserHistory.push(`/charities/${action.favorite.ein}`);
         const favoriteResults = state.favoriteResults.filter(fave => fave.ein !== action.favorite.ein);
         return {favoriteResults}
       case 'EDIT_FAVORITE':

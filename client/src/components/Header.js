@@ -10,7 +10,6 @@ import SocialPublic from 'material-ui/svg-icons/social/public';
 import {cyan100} from 'material-ui/styles/colors';
 
 const Header = () =>
-  <Router>
     <div>
       <Tabs inkBarStyle={{backgroundColor: cyan100}}>
        <Tab
@@ -35,7 +34,6 @@ const Header = () =>
         <Route path="/favorites" component={Favorites} />
       </Switch>
     </div>
-  </Router>
 ;
 
 export default Header;

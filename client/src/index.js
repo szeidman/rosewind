@@ -10,6 +10,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers';
 import registerServiceWorker from './registerServiceWorker';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -24,7 +25,9 @@ const muiTheme = getMuiTheme({
 ReactDOM.render(
   <MuiThemeProvider muiTheme={muiTheme}>
     <Provider store={store}>
-      <App />
+      <Router>
+        <App />
+      </Router>
     </Provider>
   </MuiThemeProvider>, document.getElementById('root'));
 registerServiceWorker();
