@@ -4,6 +4,8 @@ import { updateFavoriteFormData } from '../actions/favoriteFormActions';
 import { bindActionCreators } from 'redux';
 import { addFavorite } from '../actions/charityActions';
 import { updateFavorite } from '../actions/favoriteActions';
+import RaisedButton from 'material-ui/RaisedButton';
+
 
 class FavoriteForm extends Component {
 
@@ -17,6 +19,7 @@ class FavoriteForm extends Component {
     event.preventDefault();
     this.props.updateFavorite(this.props.favoriteFormData, this.props.favoriteID);
   }
+
 
   render() {
     const { charityName, ein, notes } = this.props.favoriteFormData;
@@ -37,6 +40,7 @@ class FavoriteForm extends Component {
         </form>
       </div>
     )
+
   }
 }
 

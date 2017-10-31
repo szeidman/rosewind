@@ -25,7 +25,6 @@ export const createFavorite = (favorite) => {
       .then(favorite => {
         dispatch(addFavorite(favorite))
         dispatch(resetFavoriteForm())
-        dispatch(fetchFavorite(favorite))
       })
       .catch(error => console.log(error))
   };
@@ -44,7 +43,7 @@ export const updateFavorite = (favorite, favoriteID) => {
     fetch(updateURI, request)
       .then(response => response.json())
       .then(favorite => {
-        dispatch(fetchFavorite(favorite))
+        dispatch(editFavorite(favorite))
         dispatch(resetFavoriteForm())
       })
       .catch(error => console.log(error))
