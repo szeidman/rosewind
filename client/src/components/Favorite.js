@@ -27,7 +27,7 @@ class Favorite extends Component {
 const mapStateToProps = (state, ownProps) => {
     const favorite = state.favoritesReducer.favoriteResults.find(favorite => favorite.ein == ownProps.match.params.ein);
     if (favorite) {
-      return { favorite }
+      return { favorite: favorite }
     } else {
       return { favorite: {} }
     }

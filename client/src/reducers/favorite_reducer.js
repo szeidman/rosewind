@@ -1,29 +1,13 @@
 const initialState = {
-  loading: false,
-  favoriteInfo: {
-    charityName: '',
-    ein: '',
-    notes: ''
-    }
-  }
-};
+  formView: false
+}
 
 const favoriteReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'LOADING_FAVORITE':
-      console.log('LOADING_FAVORITE')
-      return {
-        loading: true,
-        favoriteInfo: {
-          charityName: '',
-          ein: '',
-          notes: ''
-          }
-        }
-      }
-    case 'FETCH_FAVORITE':
-      console.log('FETCH_FAVORITE' + action.payload )
-      return {loading: false, favoriteInfo: action.payload}
+    case 'VIEW_EDIT_FORM':
+      return {...state, formView: true}
+    case 'HIDE_EDIT_FORM':
+      return {...state, formView: false}
     default:
       return state;
     }

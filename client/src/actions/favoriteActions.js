@@ -90,3 +90,15 @@ export function fetchFavorite(favorite) {
   };
 
 }
+
+export const viewEditForm = () => {
+  return {
+    type: 'VIEW_EDIT_FORM',
+  }
+}
+
+export const hideEditForm = () => {
+  return {
+    type: 'HIDE_EDIT_FORM',
+  }
+}

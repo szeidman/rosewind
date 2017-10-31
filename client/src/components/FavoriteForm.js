@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import { updateFavoriteFormData } from '../actions/favoriteFormActions';
 import { bindActionCreators } from 'redux';
 import { addFavorite } from '../actions/charityActions';
-import { updateFavorite } from '../actions/favoriteActions';
+import { updateFavorite, viewEditForm, hideEditForm } from '../actions/favoriteActions';
 import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField';
 
 
 class FavoriteForm extends Component {
@@ -17,36 +18,52 @@ class FavoriteForm extends Component {
 
   handleOnSubmit = event => {
     event.preventDefault();
+    this.props.hideEditForm();
     this.props.updateFavorite(this.props.favoriteFormData, this.props.favoriteID);
   }
 
+  handleOnClick = () => {
+    this.props.viewEditForm();
+  };
 
   render() {
     const { charityName, ein, notes } = this.props.favoriteFormData;
     this.props.favoriteFormData['charityName'] = this.props.charityName;
     this.props.favoriteFormData['ein'] = this.props.ein;
+    if (!!this.props.formView) {
+      return (
+        <div className="favoriteInfo">
+          <form onSubmit={this.handleOnSubmit.bind(this)}>
+            <TextField
+              type="text-field"
+              floatingLabelText="Notes"
+              onChange={this.handleOnChange}
+              name="notes"
+              placeholder={this.props.notes}
+              value={notes}
+              multiLine={true}
+              rows={10}
+            />
+            <RaisedButton type="submit" primary={true}>Confirm</RaisedButton>
+          </form>
+        </div>
+      )
+    } else {
+      return (
+        <div className="favoriteInfo">
+          <RaisedButton onClick={this.handleOnClick} primary={true}>Edit your notes</RaisedButton>
+        </div>
+      )
+    }
 
-    return (
-      <div>
-        <form onSubmit={this.handleOnSubmit.bind(this)}>
-          <label htmlFor="notes">Notes:</label>
-          <input
-            type="text-field"
-            onChange={this.handleOnChange}
-            name="notes"
-            value={notes}
-          />
-          <button type="submit">Confirm</button>
-        </form>
-      </div>
-    )
 
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    favoriteFormData: state.favoriteFormReducer
+    favoriteFormData: state.favoriteFormReducer,
+    formView: state.favoriteReducer.formView
   }
 }
 
@@ -54,7 +71,9 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     updateFavoriteFormData,
     addFavorite,
-    updateFavorite
+    updateFavorite,
+    viewEditForm,
+    hideEditForm
   }, dispatch);
 }
 
