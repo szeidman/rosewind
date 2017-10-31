@@ -47,7 +47,7 @@ module API
 
         # Only allow a trusted parameter "white list" through.
         def charity_params
-          params.permit(:ein, :charityName)
+          params.require(:charity).permit(:ein, :charityName, :notes)
         end
     end
   end

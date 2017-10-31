@@ -8,7 +8,7 @@ import IconButton from 'material-ui/IconButton';
 import ActionFavorite from 'material-ui/svg-icons/action/favorite';
 import {blue300, blue600, blue900} from 'material-ui/styles/colors';
 import CircularProgress from 'material-ui/CircularProgress';
-import {withRouter} from "react-router-dom";
+import {BrowserRouter as Router, withRouter} from "react-router-dom";
 
 
 class CharityDetail extends Component {
@@ -22,14 +22,11 @@ class CharityDetail extends Component {
     if (this.props.favorited) {
       const favorite = this.props.favorite;
       this.props.actions.removeFavorite(favorite);
-      this.props.history.push(`/charities/${this.props.infoState['ein']}`); // eslint-disable-line
     } else {
       const { charityName, ein, notes } = this.props.favoriteFormData;
       this.props.favoriteFormData['charityName'] = this.props.infoState['charityName'];
       this.props.favoriteFormData['ein'] = this.props.infoState['ein'];
       this.props.actions.addFavorite(this.props.favoriteFormData);
-      this.props.history.push(`/favorites/${this.props.infoState['ein']}`); // eslint-disable-line
-
     }
   };
 
