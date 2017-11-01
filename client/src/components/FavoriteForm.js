@@ -54,9 +54,10 @@ class FavoriteForm extends Component {
         </div>
       )
     } else if (!!this.props.ein) {
+      const noteButton = (this.props.notes === "") ? "Add Notes" : "Edit Notes";
       return (
         <div className="favoriteInfo">
-          <RaisedButton onClick={this.handleOnClick} primary={true}>Edit your notes</RaisedButton>
+          <RaisedButton onClick={this.handleOnClick} primary={true}>{noteButton}</RaisedButton>
         </div>
       )
     } else {

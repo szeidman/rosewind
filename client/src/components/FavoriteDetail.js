@@ -13,7 +13,7 @@ const FavoriteDetail = ({favorite}) => {
       <p> Last Edited: </p>
       <p>{favorite.updated_at}</p>
       <p>Your notes:</p>
-      <p>{favorite.notes}</p>
+      <p>{favorite.notes || "(Click button to add notes)"}</p>
     </div>
     )
   } else {
