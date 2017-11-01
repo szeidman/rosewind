@@ -29,7 +29,7 @@ class FavoriteForm extends Component {
     const { charityName, ein, notes } = this.props.favoriteFormData;
     this.props.favoriteFormData['charityName'] = this.props.charityName;
     this.props.favoriteFormData['ein'] = this.props.ein;
-    if (!!this.props.formView) {
+    if (!!this.props.formView && !!this.props.ein) {
       return (
         <div className="favoriteInfo">
           <form onSubmit={this.handleOnSubmit.bind(this)}>
@@ -47,12 +47,14 @@ class FavoriteForm extends Component {
           </form>
         </div>
       )
-    } else {
+    } else if (!!this.props.ein) {
       return (
         <div className="favoriteInfo">
           <RaisedButton onClick={this.handleOnClick} primary={true}>Edit your notes</RaisedButton>
         </div>
       )
+    } else {
+      return null;
     }
 
 
