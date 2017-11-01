@@ -22,13 +22,20 @@ class FavoriteForm extends Component {
   }
 
   handleOnClick = () => {
+    this.initializeNotes();
     this.props.viewEditForm();
   };
+
+  initializeNotes() {
+    const initialFavoriteFormData = Object.assign({}, this.props.favoriteFormData, {notes: this.props.notes});
+    this.props.updateFavoriteFormData(initialFavoriteFormData);
+  }
 
   render() {
     const { charityName, ein, notes } = this.props.favoriteFormData;
     this.props.favoriteFormData['charityName'] = this.props.charityName;
     this.props.favoriteFormData['ein'] = this.props.ein;
+
     if (!!this.props.formView && !!this.props.ein) {
       return (
         <div className="favoriteInfo">
@@ -38,8 +45,7 @@ class FavoriteForm extends Component {
               floatingLabelText="Notes"
               onChange={this.handleOnChange}
               name="notes"
-              placeholder={this.props.notes}
-              value={notes}
+              defaultValue={notes}
               multiLine={true}
               rows={10}
             />
