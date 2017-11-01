@@ -24,20 +24,6 @@ const charityNavKey = process.env.REACT_APP_CHARITYNAV_KEY;
    };
  }
 
- export const addFavorite = (favorite) => {
-   return (dispatch) => {
-     dispatch(createFavorite(favorite))
-   }
-
- }
-
- export const removeFavorite = ein => {
-   return (dispatch) => {
-     dispatch(deleteFavorite(ein))
-   }
-
- }
-
  export const toggleForm = () => {
   return (dispatch) => {
     dispatch({type: 'TOGGLE_FORM'});

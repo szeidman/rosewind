@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { updateFavoriteFormData } from '../actions/favoriteFormActions';
 import { bindActionCreators } from 'redux';
-import { addFavorite } from '../actions/charityActions';
 import { updateFavorite, viewEditForm, hideEditForm } from '../actions/favoriteActions';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
@@ -70,7 +69,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     updateFavoriteFormData,
-    addFavorite,
     updateFavorite,
     viewEditForm,
     hideEditForm

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../actions/charityActions.js';
+import { fetchCharity } from '../actions/charityActions.js';
+import { createFavorite, deleteFavorite } from '../actions/favoriteActions.js';
 import { bindActionCreators } from 'redux';
 import CharityCard from './CharityCard';
 import FavoriteForm from './FavoriteForm';
@@ -15,18 +16,18 @@ class CharityDetail extends Component {
 
   componentDidMount() {
     const charityEIN = window.location.pathname.split('/')[2];
-    this.props.actions.fetchCharity(charityEIN);
+    this.props.fetchCharity(charityEIN);
   };
 
   handleOnClick = (event) => {
     if (this.props.favorited) {
       const favorite = this.props.favorite;
-      this.props.actions.removeFavorite(favorite);
+      this.props.deleteFavorite(favorite);
     } else {
       const { charityName, ein, notes } = this.props.favoriteFormData;
       this.props.favoriteFormData['charityName'] = this.props.infoState['charityName'];
       this.props.favoriteFormData['ein'] = this.props.infoState['ein'];
-      this.props.actions.addFavorite(this.props.favoriteFormData);
+      this.props.createFavorite(this.props.favoriteFormData);
     }
   };
 
@@ -74,7 +75,11 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return {actions: bindActionCreators(actions, dispatch)};
+  return bindActionCreators({
+    fetchCharity,
+    createFavorite,
+    deleteFavorite
+  }, dispatch);
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CharityDetail));
