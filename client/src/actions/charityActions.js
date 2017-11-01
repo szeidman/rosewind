@@ -1,6 +1,3 @@
-import { createFavorite } from './favoriteActions';
-import { deleteFavorite } from './favoriteActions';
-
 const charityNavId = process.env.REACT_APP_CHARITYNAV_ID;
 const charityNavKey = process.env.REACT_APP_CHARITYNAV_KEY;
 

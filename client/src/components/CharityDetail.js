@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchCharity } from '../actions/charityActions.js';
-import { createFavorite, deleteFavorite } from '../actions/favoriteActions.js';
+import { createFavorite, deleteFavorite, clearRedirect } from '../actions/favoriteActions.js';
 import { bindActionCreators } from 'redux';
 import CharityCard from './CharityCard';
 import FavoriteForm from './FavoriteForm';
@@ -22,12 +22,12 @@ class CharityDetail extends Component {
   handleOnClick = (event) => {
     if (this.props.favorited) {
       const favorite = this.props.favorite;
-      this.props.deleteFavorite(favorite);
+      this.props.deleteFavorite(favorite, this.props.history);
     } else {
       const { charityName, ein, notes } = this.props.favoriteFormData;
       this.props.favoriteFormData['charityName'] = this.props.infoState['charityName'];
       this.props.favoriteFormData['ein'] = this.props.infoState['ein'];
-      this.props.createFavorite(this.props.favoriteFormData);
+      this.props.createFavorite(this.props.favoriteFormData, this.props.history);
     }
   };
 
@@ -70,7 +70,8 @@ const mapStateToProps = (state, ownProps) => {
     favorited: isFavorite,
     favorite: matchedFavorite,
     loading: state.charityReducer.loading,
-    favoriteFormData: state.favoriteFormReducer
+    favoriteFormData: state.favoriteFormReducer,
+    redirect: state.favoritesReducer.redirect
   };
 }
 
@@ -78,7 +79,8 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     fetchCharity,
     createFavorite,
-    deleteFavorite
+    deleteFavorite,
+    clearRedirect
   }, dispatch);
 }
 

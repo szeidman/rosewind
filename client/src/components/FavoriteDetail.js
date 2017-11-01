@@ -17,7 +17,9 @@ const FavoriteDetail = ({favorite}) => {
     </div>
     )
   } else {
-    return null;
+    return (
+      <div className="favoriteInfo"><p>This charity is not currently in your favorites.</p></div>
+    );
   }
 
 }

@@ -1,5 +1,7 @@
 import { resetFavoriteForm } from './favoriteFormActions';
 import { toggleForm } from './charityActions';
+import { browserHistory } from 'react-router';
+
 
 export function fetchFavorites() {
 
@@ -12,7 +14,7 @@ export function fetchFavorites() {
 
 }
 
-export const createFavorite = (favorite) => {
+export const createFavorite = (favorite, createHistory) => {
   return dispatch => {
     const request = {
       method: 'post',
@@ -23,6 +25,7 @@ export const createFavorite = (favorite) => {
     fetch("http://localhost:3001/api/v1/charities", request)
       .then(response => response.json())
       .then(favorite => {
+        createHistory.push(`/favorites/${favorite.ein}`);// eslint-disable-line
         dispatch(addFavorite(favorite))
         dispatch(resetFavoriteForm())
       })
@@ -50,11 +53,12 @@ export const updateFavorite = (favorite, favoriteID) => {
   };
 }
 
-export const deleteFavorite = (favorite) => {
+export const deleteFavorite = (favorite, deleteHistory) => {
   return dispatch => {
     fetch(`http://localhost:3001/api/v1/charities/${favorite.id}`, {
       method: 'delete'
     }).then(response => {
+      deleteHistory.push(`/charities/${favorite.ein}`);
       dispatch(removeFavorite(favorite))
     });
   }
@@ -79,6 +83,10 @@ export const removeFavorite = favorite => {
     type: 'DELETE_FAVORITE',
     favorite
   }
+}
+
+export const clearRedirect = () => {
+  return { type: 'CLEAR_REDIRECT' }
 }
 
 export function fetchFavorite(favorite) {

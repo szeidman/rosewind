@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import CharityDetail from './CharityDetail';
+import {withRouter} from "react-router-dom";
+
 
 const Charity = ({ charity }) =>
   <div>
@@ -17,4 +19,4 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 
-export default connect(mapStateToProps)(Charity);
+export default withRouter(connect(mapStateToProps)(Charity));
