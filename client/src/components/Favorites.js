@@ -31,8 +31,8 @@ class Favorites extends Component {
     if (this.props.hasError) {
       return (
         <div>
-          <h3>An error occurred regarding your Favorites. Click the button below to try again. If the problem persists, contact your administrator.</h3>
-          <RaisedButton onClick={this.againOnClick.bind(this)}>Try Again</RaisedButton>
+          <h3>An error occurred regarding your Favorites. Click the button below to reload your Favorites. If the problem persists, contact your administrator.</h3>
+          <RaisedButton onClick={this.againOnClick.bind(this)}>Reload Favorites</RaisedButton>
         </div>
       )
     }
