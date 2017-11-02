@@ -7,28 +7,40 @@ import * as actions from '../actions/charityActions.js';
 import { bindActionCreators } from 'redux';
 import RaisedButton from 'material-ui/RaisedButton';
 import CircularProgress from 'material-ui/CircularProgress';
-
-
-const codeState = 'NJ';
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
+import {cyan900} from 'material-ui/styles/colors';
 
 class Charities extends Component {
 
   handleOnClick = () => {
+    const stateCode = this.props.stateCode;
     this.props.actions.resetError();
-    this.props.actions.fetchCharities(codeState);
+    this.props.actions.fetchCharities(stateCode);
   };
+
+  handleOnChange = event => {
+    this.props.actions.setStateCode(event.target.innerText);
+  }
 
   render() {
     const {match, charityState} = this.props;
     const loading = this.props.loading;
 
-    if (loading) {
-      return (<div><CircularProgress size={200} thickness={10} /></div>)
+    const loadingWheel =
+      <h1><CircularProgress size={200} thickness={10} /></h1>
+
+    const errorMessage = <h3>An error occurred loading these charities. Click the button above to try again. If the problem persists, contact your administrator.</h3>
+
+    let errorLoadOrList;
+
+    if (!!this.props.hasError) {
+      errorLoadOrList = errorMessage;
+    } else if (!!this.props.loading) {
+      errorLoadOrList = loadingWheel;
+    } else {
+      errorLoadOrList = <CharityList charityState={charityState} />
     }
-
-    const ErrorMessage = <h3>An error occurred loading these charities. Click the button above to try again. If the problem persists, contact your administrator.</h3>
-
-    const ErrorOrList = (!!this.props.hasError) ? ErrorMessage : <CharityList charityState={charityState} />
 
     return (
     <div>
@@ -37,10 +49,24 @@ class Charities extends Component {
         <Route exact path={`${match.url}`} render={() => (
           <div>
             <h1>Charities</h1>
-            <RaisedButton onClick={this.handleOnClick} primary={true}>
+            <h4>Find the top-rated charities and nonprofits on Charity Navigator in each U.S. state.</h4>
+            <SelectField
+              defaultValue={this.props.stateCode}
+              onChange={this.handleOnChange.bind(this)}
+              menuItemStyle={{color: cyan900}}
+              floatingLabelFixed={true}
+              floatingLabelText="Select a state:"
+              underlineStyle={{display: 'none'}}
+              style={{width: 120}}
+            >
+              <MenuItem primaryText="NY" />
+              <MenuItem primaryText="NJ" />
+            </SelectField>
+            <br />
+            <RaisedButton onClick={this.handleOnClick.bind(this)} primary={true}>
               Load Charities
             </RaisedButton>
-            {ErrorOrList}
+            {errorLoadOrList}
           </div>
         )} />
       </Switch>
@@ -53,7 +79,8 @@ const mapStateToProps = (state) => {
   return {
     charityState: state.charitiesReducer.charityResults,
     loading: state.charitiesReducer.loading,
-    hasError: state.charitiesReducer.hasError
+    hasError: state.charitiesReducer.hasError,
+    stateCode: state.charitiesReducer.stateCode
   };
 }
 
