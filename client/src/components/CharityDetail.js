@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchCharity } from '../actions/charityActions.js';
+import { fetchCharity, resetError } from '../actions/charityActions.js';
 import { createFavorite, deleteFavorite, clearRedirect } from '../actions/favoriteActions.js';
 import { bindActionCreators } from 'redux';
 import CharityCard from './CharityCard';
@@ -9,11 +9,14 @@ import ActionFavorite from 'material-ui/svg-icons/action/favorite';
 import {blue300, blue600, blue900} from 'material-ui/styles/colors';
 import CircularProgress from 'material-ui/CircularProgress';
 import {withRouter} from "react-router-dom";
+import RaisedButton from 'material-ui/RaisedButton';
+
 
 
 class CharityDetail extends Component {
 
   componentDidMount() {
+    this.props.resetError();
     const charityEIN = window.location.pathname.split('/')[2];
     this.props.fetchCharity(charityEIN);
   };
@@ -29,6 +32,10 @@ class CharityDetail extends Component {
     }
   };
 
+  againOnClick() {
+    this.componentDidMount()
+  }
+
   render() {
     const buttonText = (this.props.favorited) ? "Remove from favorites" : "Add to favorites";
     const buttonColor = (this.props.favorited) ? blue900 : blue300;
@@ -36,6 +43,15 @@ class CharityDetail extends Component {
 
     if (loading) {
       return (<div><CircularProgress size={200} thickness={10} /></div>)
+    }
+
+    if (this.props.hasError) {
+      return (
+        <div>
+          <h3>An error occurred loading this charity. Click the button below to try again. If the problem persists, contact your administrator.</h3>
+          <RaisedButton onClick={this.againOnClick.bind(this)}>Try Again</RaisedButton>
+        </div>
+      )
     }
 
     return (
@@ -68,7 +84,8 @@ const mapStateToProps = (state, ownProps) => {
     favorite: matchedFavorite,
     loading: state.charityReducer.loading,
     favoriteFormData: state.favoriteFormReducer,
-    redirect: state.favoritesReducer.redirect
+    redirect: state.favoritesReducer.redirect,
+    hasError: state.charityReducer.hasError
   };
 }
 
@@ -77,7 +94,8 @@ const mapDispatchToProps = (dispatch) => {
     fetchCharity,
     createFavorite,
     deleteFavorite,
-    clearRedirect
+    clearRedirect,
+    resetError
   }, dispatch);
 }
 

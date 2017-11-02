@@ -12,11 +12,11 @@ import RaisedButton from 'material-ui/RaisedButton';
 class Favorites extends Component {
 
   againOnClick() {
-    this.props.actions.resetError();
     this.componentDidMount()
   }
 
   componentDidMount() {
+    this.props.actions.resetError();
     this.props.actions.fetchFavorites();
   };
 
