@@ -25,7 +25,7 @@ class Favorite extends Component {
 };
 
 const mapStateToProps = (state, ownProps) => {
-    const favorite = state.favoritesReducer.favoriteResults.find(favorite => favorite.ein == ownProps.match.params.ein);
+    const favorite = state.favoritesReducer.favoriteResults.find(favorite => favorite.ein == ownProps.match.params.ein); // eslint-disable-line eqeqeq
     if (favorite) {
       return { favorite: favorite }
     } else {

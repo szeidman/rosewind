@@ -1,6 +1,4 @@
 import { resetFavoriteForm } from './favoriteFormActions';
-import { toggleForm } from './charityActions';
-import { browserHistory } from 'react-router';
 
 
 export function fetchFavorites() {
@@ -29,7 +27,7 @@ export const createFavorite = (favorite, createHistory) => {
         dispatch(addFavorite(favorite))
         dispatch(resetFavoriteForm())
       })
-      .catch(error => console.log(error))
+      .catch(function(error) {console.log(error)})
   };
 }
 

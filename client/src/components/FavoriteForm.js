@@ -32,7 +32,6 @@ class FavoriteForm extends Component {
   }
 
   render() {
-    const { charityName, ein, notes } = this.props.favoriteFormData;
     this.props.favoriteFormData['charityName'] = this.props.charityName;
     this.props.favoriteFormData['ein'] = this.props.ein;
 
@@ -45,7 +44,7 @@ class FavoriteForm extends Component {
               floatingLabelText="Notes"
               onChange={this.handleOnChange}
               name="notes"
-              defaultValue={notes}
+              defaultValue={this.props.favoriteFormData['notes']}
               multiLine={true}
               rows={10}
             />

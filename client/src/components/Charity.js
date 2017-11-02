@@ -10,7 +10,7 @@ const Charity = ({ charity }) =>
   </div>;
 
 const mapStateToProps = (state, ownProps) => {
-    const charity = state.charitiesReducer.charityResults.find(charity => charity.ein == ownProps.match.params.ein);
+    const charity = state.charitiesReducer.charityResults.find(charity => charity.ein == ownProps.match.params.ein); // eslint-disable-line eqeqeq
     if (charity) {
       return { charity }
     } else {
