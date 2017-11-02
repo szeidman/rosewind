@@ -10,19 +10,24 @@ import './favoritecard.css';
 class Favorite extends Component {
 
   render(){
+    const DetailInfo =
+      <Card className="favoritecard">
+        <FavoriteDetail favorite={this.props.favorite} />
+        <FavoriteForm
+          charityName={this.props.favorite.charityName}
+          ein={this.props.favorite.ein}
+          notes={this.props.favorite.notes}
+          favoriteID={this.props.favorite.id}
+        />
+      </Card>
+    ;
+
+    const WaitToLoad = (!!this.props.loading) ? null : DetailInfo;
 
     return (
       <div>
         <CharityDetail charityEIN={this.props.favorite.ein} />
-        <Card className="favoritecard">
-          <FavoriteDetail favorite={this.props.favorite} />
-          <FavoriteForm
-            charityName={this.props.favorite.charityName}
-            ein={this.props.favorite.ein}
-            notes={this.props.favorite.notes}
-            favoriteID={this.props.favorite.id}
-          />
-        </Card>
+        {WaitToLoad}
       </div>
     )
   }
@@ -31,10 +36,11 @@ class Favorite extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     const favorite = state.favoritesReducer.favoriteResults.find(favorite => favorite.ein == ownProps.match.params.ein); // eslint-disable-line eqeqeq
+    const loading = state.charityReducer.loading;
     if (favorite) {
-      return { favorite: favorite }
+      return { favorite, loading }
     } else {
-      return { favorite: {} }
+      return { favorite: {}, loading }
     }
 }
 

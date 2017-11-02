@@ -15,7 +15,7 @@ const FavoriteDetail = ({favorite}) => {
       {favorite.created_at}
       <p className="favoriteLabel"> Last Edited: </p>
       {favorite.updated_at}
-      <p className="favoriteLabel">Your notes:</p>
+      <p className="favoriteLabel">Your Notes:</p>
       <p className="favoriteNote">{favorite.notes || "(Click button to add notes)"}</p>
     </div>
     )
