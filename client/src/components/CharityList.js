@@ -14,6 +14,7 @@ const CharityList = ({charityState}) => {
       </Card>
     </Link>
     );
+
   return (
     <div>
       {CharityRender}

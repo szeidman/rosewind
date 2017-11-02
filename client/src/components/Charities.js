@@ -8,11 +8,13 @@ import { bindActionCreators } from 'redux';
 import RaisedButton from 'material-ui/RaisedButton';
 import CircularProgress from 'material-ui/CircularProgress';
 
+
 const codeState = 'NJ';
 
 class Charities extends Component {
 
   handleOnClick = () => {
+    this.props.actions.resetError();
     this.props.actions.fetchCharities(codeState);
   };
 
@@ -24,6 +26,10 @@ class Charities extends Component {
       return (<div><CircularProgress size={200} thickness={10} /></div>)
     }
 
+    const ErrorMessage = <h3>An error occurred loading these charities. Click the button above to try again. If the problem persists, contact your administrator.</h3>
+
+    const ErrorOrList = (!!this.props.hasError) ? ErrorMessage : <CharityList charityState={charityState} />
+
     return (
     <div>
       <Switch>
@@ -34,7 +40,7 @@ class Charities extends Component {
             <RaisedButton onClick={this.handleOnClick} primary={true}>
               Load charities
             </RaisedButton>
-            <CharityList charityState={charityState} />
+            {ErrorOrList}
           </div>
         )} />
       </Switch>
@@ -46,7 +52,8 @@ class Charities extends Component {
 const mapStateToProps = (state) => {
   return {
     charityState: state.charitiesReducer.charityResults,
-    loading: state.charitiesReducer.loading
+    loading: state.charitiesReducer.loading,
+    hasError: state.charitiesReducer.hasError
   };
 }
 

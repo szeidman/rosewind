@@ -1,4 +1,4 @@
-const charitiesReducer = (state = {loading: false, charityResults: []}, action) => {
+const charitiesReducer = (state = {loading: false, charityResults: [], hasError: false}, action) => {
   switch (action.type) {
     case 'LOADING_CHARITIES':
       console.log('LOADING_CHARITIES')
