@@ -6,8 +6,10 @@ export function fetchFavorites() {
   return (dispatch) => {
     dispatch({ type: 'LOADING_FAVORITES' });
     return fetch("http://localhost:3001/api/v1/charities")
+      .then(handleErrors)
       .then(response => response.json())
-      .then(json => dispatch({ type: 'FETCH_FAVORITES', payload: json }));
+      .then(json => dispatch({ type: 'FETCH_FAVORITES', payload: json }))
+      .catch(error => dispatch(displayError()));
   };
 
 }
@@ -21,13 +23,14 @@ export const createFavorite = (favorite, createHistory) => {
       body: JSON.stringify({ charity: favorite })
     };
     fetch("http://localhost:3001/api/v1/charities", request)
+      .then(handleErrors)
       .then(response => response.json())
       .then(favorite => {
         createHistory.push(`/favorites/${favorite.ein}`);// eslint-disable-line
         dispatch(addFavorite(favorite))
         dispatch(resetFavoriteForm())
       })
-      .catch(function(error) {console.log(error)})
+      .catch(error => dispatch(displayError()));
   };
 }
 
@@ -42,12 +45,13 @@ export const updateFavorite = (favorite, favoriteID) => {
       body: JSON.stringify({ charity: favorite })
     };
     fetch(updateURI, request)
+      .then(handleErrors)
       .then(response => response.json())
       .then(favorite => {
         dispatch(editFavorite(favorite))
         dispatch(resetFavoriteForm())
       })
-      .catch(error => console.log(error))
+      .catch(error => dispatch(displayError()));
   };
 }
 
@@ -55,10 +59,12 @@ export const deleteFavorite = (favorite, deleteHistory) => {
   return dispatch => {
     fetch(`http://localhost:3001/api/v1/charities/${favorite.id}`, {
       method: 'delete'
-    }).then(response => {
+    }).then(handleErrors)
+    .then(response => {
       deleteHistory.push(`/charities/${favorite.ein}`);
       dispatch(removeFavorite(favorite))
-    });
+    })
+    .catch(error => dispatch(displayError()));
   }
 }
 
@@ -91,8 +97,10 @@ export function fetchFavorite(favorite) {
   return (dispatch) => {
     dispatch({ type: 'LOADING_FAVORITE' });
     return fetch(`http://localhost:3001/api/v1/charities/${favorite.id}`)
+      .then(handleErrors)
       .then(response => response.json())
-      .then(json => dispatch({ type: 'FETCH_FAVORITE', payload: json }));
+      .then(json => dispatch({ type: 'FETCH_FAVORITE', payload: json }))
+      .catch(error => dispatch(displayError()));
   };
 
 }
@@ -106,5 +114,24 @@ export const viewEditForm = () => {
 export const hideEditForm = () => {
   return {
     type: 'HIDE_EDIT_FORM',
+  }
+}
+
+function handleErrors(response) {
+  if (!response.ok) {
+    throw Error(response.statusText);
+  }
+  return response;
+}
+
+export const displayError = () => {
+  return {
+    type: 'HANDLE_ERROR'
+  }
+}
+
+export const resetError = () => {
+  return {
+    type: 'RESET_ERROR'
   }
 }

@@ -6,9 +6,15 @@ import Favorite from './Favorite';
 import * as actions from '../actions/favoriteActions.js';
 import { bindActionCreators } from 'redux';
 import CircularProgress from 'material-ui/CircularProgress';
+import RaisedButton from 'material-ui/RaisedButton';
 
 
 class Favorites extends Component {
+
+  againOnClick() {
+    this.props.actions.resetError();
+    this.componentDidMount()
+  }
 
   componentDidMount() {
     this.props.actions.fetchFavorites();
@@ -20,6 +26,15 @@ class Favorites extends Component {
 
     if (loading) {
       return (<div><CircularProgress size={200} thickness={10} /></div>)
+    }
+
+    if (this.props.hasError) {
+      return (
+        <div>
+          <h3>An error occurred loading your Favorites. Click the button below to try again. If the problem persists, contact your administrator.</h3>
+          <RaisedButton onClick={this.againOnClick.bind(this)}>Try Again</RaisedButton>
+        </div>
+      )
     }
 
     return (
@@ -41,7 +56,8 @@ class Favorites extends Component {
 const mapStateToProps = (state) => {
   return {
     favoriteState: state.favoritesReducer.favoriteResults,
-    loading: state.favoritesReducer.loading
+    loading: state.favoritesReducer.loading,
+    hasError: state.favoritesReducer.hasError
   };
 }
 

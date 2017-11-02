@@ -8,6 +8,7 @@ import FavoriteDetail from './FavoriteDetail';
 class Favorite extends Component {
 
   render(){
+
     return (
       <div>
         <CharityDetail charityEIN={this.props.favorite.ein} />
@@ -26,6 +27,7 @@ class Favorite extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     const favorite = state.favoritesReducer.favoriteResults.find(favorite => favorite.ein == ownProps.match.params.ein); // eslint-disable-line eqeqeq
+    const hasError = state.favoritesReducer.hasError;
     if (favorite) {
       return { favorite: favorite }
     } else {

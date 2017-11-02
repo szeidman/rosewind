@@ -6,6 +6,10 @@ const charitiesReducer = (state = {loading: false, charityResults: []}, action) 
     case 'FETCH_CHARITIES':
       console.log('FETCH_CHARITIES' + state)
       return {loading: false, charityResults: action.payload}
+    case 'HANDLE_ERROR':
+      return {...state, hasError: true, loading: false}
+    case 'RESET_ERROR':
+      return {...state, hasError: false}
     default:
       return state;
     }
