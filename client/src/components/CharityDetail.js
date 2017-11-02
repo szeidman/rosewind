@@ -48,7 +48,7 @@ class CharityDetail extends Component {
     if (this.props.hasError) {
       return (
         <div>
-          <h3>An error occurred loading this charity. Click the button below to try again. If the problem persists, contact your administrator.</h3>
+          <h3>An error occurred regarding this charity. Click the button below to try again. If the problem persists, contact your administrator.</h3>
           <RaisedButton onClick={this.againOnClick.bind(this)}>Try Again</RaisedButton>
         </div>
       )
