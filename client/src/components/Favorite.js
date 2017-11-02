@@ -4,6 +4,8 @@ import CharityDetail from './CharityDetail';
 import './favorite.css';
 import FavoriteForm from './FavoriteForm';
 import FavoriteDetail from './FavoriteDetail';
+import Card from 'material-ui/Card';
+import './favoritecard.css';
 
 class Favorite extends Component {
 
@@ -12,13 +14,15 @@ class Favorite extends Component {
     return (
       <div>
         <CharityDetail charityEIN={this.props.favorite.ein} />
-        <FavoriteDetail favorite={this.props.favorite} />
-        <FavoriteForm
-          charityName={this.props.favorite.charityName}
-          ein={this.props.favorite.ein}
-          notes={this.props.favorite.notes}
-          favoriteID={this.props.favorite.id}
-        />
+        <Card className="favoritecard">
+          <FavoriteDetail favorite={this.props.favorite} />
+          <FavoriteForm
+            charityName={this.props.favorite.charityName}
+            ein={this.props.favorite.ein}
+            notes={this.props.favorite.notes}
+            favoriteID={this.props.favorite.id}
+          />
+        </Card>
       </div>
     )
   }

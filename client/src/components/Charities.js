@@ -38,7 +38,7 @@ class Charities extends Component {
           <div>
             <h1>Charities</h1>
             <RaisedButton onClick={this.handleOnClick} primary={true}>
-              Load charities
+              Load Charities
             </RaisedButton>
             {ErrorOrList}
           </div>

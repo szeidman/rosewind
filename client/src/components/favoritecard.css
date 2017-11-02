@@ -1,0 +1,21 @@
+.favoritecard {
+  float: left;
+  position: relative;
+  background: #00838F; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(right bottom,rgba(0,131,143,.85),rgba(0,131,143,1)); /*Safari 5.1-6*/
+  background: -o-linear-gradient(top left,rgba(0,131,143,.85),rgba(0,131,143,1)); /*Opera 11.1-12*/
+  background: -moz-linear-gradient(top left,rgba(0,131,143,.85),rgba(0,131,143,1)); /*Fx 3.6-15*/
+  background: linear-gradient(to top left, rgba(0,131,143,.85), rgba(0,131,143,1)); /*Standard*/
+  max-width: 410px !important;
+  min-width: 40%;
+  margin-left: 5px;
+}
+
+.favoriteNote {
+  text-shadow: 1px 1px darkblue;
+  margin: 3px;
+}
+
+.favoriteLabel {
+  margin-bottom: 3px
+}

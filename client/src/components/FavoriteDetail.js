@@ -1,17 +1,22 @@
 import React from 'react';
+import {CardHeader} from 'material-ui/Card';
 
 const FavoriteDetail = ({favorite}) => {
 
   if (!!favorite.ein) {
     return (
     <div className="favoriteInfo">
-      <p>{favorite.charityName}</p>
-      <p> Added to favorites: </p>
+      <CardHeader
+        title={favorite.charityName}
+        subtitle="is in your favorites."
+      />
+      <p>Employer Identification Number (EIN): {favorite.ein}</p>
+      <p className="favoriteLabel"> Added:</p>
       {favorite.created_at}
-      <p> Last Edited: </p>
-      <p>{favorite.updated_at}</p>
-      <p>Your notes:</p>
-      <p>{favorite.notes || "(Click button to add notes)"}</p>
+      <p className="favoriteLabel"> Last Edited: </p>
+      {favorite.updated_at}
+      <p className="favoriteLabel">Your notes:</p>
+      <p className="favoriteNote">{favorite.notes || "(Click button to add notes)"}</p>
     </div>
     )
   } else {

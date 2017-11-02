@@ -48,7 +48,7 @@ class FavoriteForm extends Component {
               multiLine={true}
               rows={10}
             />
-            <RaisedButton type="submit" primary={true}>Confirm</RaisedButton>
+            <RaisedButton type="submit" primary={true}>Confirm Changes</RaisedButton>
           </form>
         </div>
       )
