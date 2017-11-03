@@ -19,6 +19,16 @@ const FavoriteList = ({favoriteState}) => {
       </Card>
     </Link>
     );
+
+  if (favoriteState.length === 0) {
+    return(
+      <div>
+        <h3>There are no favorites yet.</h3>
+        <p>Visit the Charities page to browse charities and add them to Favorites.</p>
+      </div>
+    )
+  };
+
   return (
     <div>
       {FavoriteRender}
