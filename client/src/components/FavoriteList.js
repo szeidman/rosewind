@@ -11,6 +11,8 @@ const FavoriteList = ({favoriteState}) => {
       <Card className="listrender">
         <CardHeader className="favorite"
           title={favorite.charityName}
+          subtitle={favorite.notes}
+          subtitleStyle={{overflow: "hidden", textOverflow: "ellipsis", whiteSpace: 'nowrap', width: '20rem'}}
         />
       </Card>
     </Link>

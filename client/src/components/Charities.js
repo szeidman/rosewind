@@ -16,6 +16,10 @@ const Codes = ["AK", "AL", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI",
 
 class Charities extends Component {
 
+  componentDidMount() {
+    this.props.actions.resetError();
+  };
+
   handleOnClick = () => {
     const stateCode = this.props.stateCode;
     this.props.actions.resetError();
