@@ -2,10 +2,10 @@ const charitiesReducer = (state = {loading: false, charityResults: [], hasError:
   switch (action.type) {
     case 'LOADING_CHARITIES':
       console.log('LOADING_CHARITIES')
-      return {loading: true, charityResults: []}
+      return {...state, loading: true, charityResults: []}
     case 'FETCH_CHARITIES':
       console.log('FETCH_CHARITIES' + state)
-      return {loading: false, charityResults: action.payload}
+      return {...state, loading: false, charityResults: action.payload}
     case 'HANDLE_ERROR':
       return {...state, hasError: true, loading: false}
     case 'RESET_ERROR':

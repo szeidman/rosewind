@@ -8,8 +8,11 @@ import { bindActionCreators } from 'redux';
 import RaisedButton from 'material-ui/RaisedButton';
 import CircularProgress from 'material-ui/CircularProgress';
 import SelectField from 'material-ui/SelectField';
-import MenuItem from 'material-ui/MenuItem';
 import {cyan900} from 'material-ui/styles/colors';
+import MenuItem from 'material-ui/MenuItem';
+
+
+const Codes = ["AK", "AL", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY", "DC"]
 
 class Charities extends Component {
 
@@ -25,7 +28,6 @@ class Charities extends Component {
 
   render() {
     const {match, charityState} = this.props;
-    const loading = this.props.loading;
 
     const loadingWheel =
       <h1><CircularProgress size={200} thickness={10} /></h1>
@@ -42,6 +44,12 @@ class Charities extends Component {
       errorLoadOrList = <CharityList charityState={charityState} />
     }
 
+    const oneCode = Codes.map(code => <MenuItem
+      key={code}
+      primaryText={code}
+      value={code}
+    />)
+
     return (
     <div>
       <Switch>
@@ -49,18 +57,17 @@ class Charities extends Component {
         <Route exact path={`${match.url}`} render={() => (
           <div>
             <h1>Charities</h1>
-            <h4>Find the top-rated charities and nonprofits on Charity Navigator in each U.S. state.</h4>
+            <h4>Find the top-rated charities and nonprofits on Charity Navigator in each U.S. state and D.C.</h4>
             <SelectField
-              defaultValue={this.props.stateCode}
+              value={this.props.stateCode}
               onChange={this.handleOnChange.bind(this)}
-              menuItemStyle={{color: cyan900}}
               floatingLabelFixed={true}
               floatingLabelText="Select a state:"
               underlineStyle={{display: 'none'}}
               style={{width: 120}}
+              labelStyle={{ color: cyan900 }}
             >
-              <MenuItem primaryText="NY" />
-              <MenuItem primaryText="NJ" />
+              {oneCode}
             </SelectField>
             <br />
             <RaisedButton onClick={this.handleOnClick.bind(this)} primary={true}>

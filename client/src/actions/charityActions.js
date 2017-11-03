@@ -51,7 +51,6 @@ const charityNavKey = process.env.REACT_APP_CHARITYNAV_KEY;
  }
 
  export const setStateCode = (stateCode) => {
-   debugger;
    return {
      type: 'SET_STATE_CODE',
      stateCode
