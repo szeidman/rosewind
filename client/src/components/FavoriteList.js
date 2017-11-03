@@ -5,8 +5,9 @@ import './list.css';
 
 
 const FavoriteList = ({favoriteState}) => {
-
-  const FavoriteRender = favoriteState.map(favorite =>
+  const SortedFavorites = favoriteState.sort((a,b) => a.charityName.localeCompare(b.charityName));
+  
+  const FavoriteRender = SortedFavorites.map(favorite =>
     <Link key={favorite.id} to={`/favorites/${favorite.ein}`}>
       <Card className="listrender">
         <CardHeader className="favorite"

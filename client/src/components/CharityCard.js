@@ -12,7 +12,7 @@ const CharityCard = ({info}) => {
           <img className="cardImage" src={info['cause']['image']}  alt="" />
         </CardMedia>
         <CardText>
-          <p>{info['cause']['causeName']}</p>
+          <h3>{info['cause']['causeName']}</h3>
           <div className="address">
           <p>{info['mailingAddress']['streetAddress1']}</p>
           <p>{info['mailingAddress']['streetAddress2']}</p>
