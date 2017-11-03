@@ -48,7 +48,7 @@ class FavoriteForm extends Component {
               multiLine={true}
               rows={10}
             />
-            <RaisedButton type="submit" primary={true}>Confirm Changes</RaisedButton>
+            <RaisedButton type="submit" primary={true} label="Confirm Changes"/>
           </form>
         </div>
       )
@@ -56,7 +56,7 @@ class FavoriteForm extends Component {
       const noteButton = (this.props.notes === "") ? "Add Notes" : "Edit Notes";
       return (
         <div className="favoriteInfo">
-          <RaisedButton onClick={this.handleOnClick} primary={true}>{noteButton}</RaisedButton>
+          <RaisedButton onClick={this.handleOnClick} primary={true} label={noteButton} />
         </div>
       )
     } else {

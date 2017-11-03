@@ -32,7 +32,7 @@ class Favorites extends Component {
       return (
         <div>
           <h3>An error occurred regarding your Favorites. Click the button below to reload your Favorites. If the problem persists, contact your administrator.</h3>
-          <RaisedButton onClick={this.againOnClick.bind(this)}>Reload Favorites</RaisedButton>
+          <RaisedButton primary={true} onClick={this.againOnClick.bind(this)} label="Reload Favorites" />
         </div>
       )
     }

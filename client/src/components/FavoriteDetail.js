@@ -35,7 +35,7 @@ const FavoriteDetail = ({favorite}) => {
       <p className="favoriteLabel"> Last Edited: </p>
       {EditTime}
       <p className="favoriteLabel">Your Notes:</p>
-      <p className="favoriteNote">{favorite.notes || "(Click button to add notes)"}</p>
+      <p className="favoriteNote">{favorite.notes || "[None]"}</p>
     </div>
     )
   } else {

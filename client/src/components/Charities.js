@@ -70,13 +70,13 @@ class Charities extends Component {
               underlineStyle={{display: 'none'}}
               style={{width: 120}}
               labelStyle={{ color: cyan900 }}
+              selectedMenuItemStyle={{ color: '#FFFFFF' }}
+              listStyle={{backgroundColor: cyan900}}
             >
               {oneCode}
             </SelectField>
             <br />
-            <RaisedButton onClick={this.handleOnClick.bind(this)} primary={true}>
-              Load Charities
-            </RaisedButton>
+            <RaisedButton onClick={this.handleOnClick.bind(this)} primary={true} label="Load Charities" />
             {errorLoadOrList}
           </div>
         )} />

@@ -49,7 +49,7 @@ class CharityDetail extends Component {
       return (
         <div>
           <h3>An error occurred regarding this charity. Click the button below to try again. If the problem persists, contact your administrator.</h3>
-          <RaisedButton onClick={this.againOnClick.bind(this)}>Try Again</RaisedButton>
+          <RaisedButton primary={true} onClick={this.againOnClick.bind(this)} label="Try Again"/>
         </div>
       )
     }
