@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Route, Switch, NavLink, withRouter } from 'react-router-dom';
+import { Route, Switch, Link, withRouter } from 'react-router-dom';
 import Charities from './Charities';
 import Favorites from './Favorites';
 import Home from './Home';
@@ -37,19 +37,19 @@ class Header extends Component {
         <Tabs inkBarStyle={{backgroundColor: cyan100}} value={TabValue}>
          <Tab
             label="Home"
-            containerElement={<NavLink to="/"/>}
+            containerElement={<Link to="/"/>}
             icon={<ActionHome />}
             value="home"
           />
          <Tab
             label="Charities"
-            containerElement={<NavLink to="/charities"/>}
+            containerElement={<Link to="/charities"/>}
             icon={<SocialPublic />}
             value="charities"
          />
          <Tab
             label="Favorites"
-            containerElement={<NavLink to="/favorites"/>}
+            containerElement={<Link to="/favorites"/>}
             icon={<ActionFavorite />}
             value="favorites"
          />
