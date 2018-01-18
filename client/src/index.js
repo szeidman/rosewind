@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import createMuiTheme from 'material-ui/styles/createMuiTheme';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import {cyan300} from 'material-ui/styles/colors';
 import './index.css';
 import App from './App';
@@ -18,7 +18,7 @@ const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)))
 
 const font = "'Libre Franklin', sans-serif";
 
-const muiTheme = createMuiTheme({
+const muiTheme = getMuiTheme({
   palette: {
     textColor: cyan300,
   },
