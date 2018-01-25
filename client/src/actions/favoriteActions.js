@@ -5,7 +5,9 @@ export function fetchFavorites() {
 
   return (dispatch) => {
     dispatch({ type: 'LOADING_FAVORITES' });
-    return fetch("http://localhost:3001/api/v1/charities")
+    return fetch(`/api/v1/charities`, {
+      accept: 'application/json',
+    })
       .then(handleErrors)
       .then(response => response.json())
       .then(json => dispatch({ type: 'FETCH_FAVORITES', payload: json }))
@@ -22,7 +24,7 @@ export const createFavorite = (favorite, createHistory) => {
       },
       body: JSON.stringify({ charity: favorite })
     };
-    fetch("http://localhost:3001/api/v1/charities", request)
+    fetch(`/api/v1/charities`, request)
       .then(handleErrors)
       .then(response => response.json())
       .then(favorite => {
@@ -35,7 +37,7 @@ export const createFavorite = (favorite, createHistory) => {
 }
 
 export const updateFavorite = (favorite, favoriteID) => {
-  const updateURI = "http://localhost:3001/api/v1/charities/"+favoriteID;
+  const updateURI = `/api/v1/charities/${favoriteID}`;
   return dispatch => {
     const request = {
       method: 'PUT',
@@ -57,7 +59,7 @@ export const updateFavorite = (favorite, favoriteID) => {
 
 export const deleteFavorite = (favorite, deleteHistory) => {
   return dispatch => {
-    fetch(`http://localhost:3001/api/v1/charities/${favorite.id}`, {
+    fetch(`/api/v1/charities/${favorite.id}`, {
       method: 'delete'
     }).then(handleErrors)
     .then(response => {
@@ -96,7 +98,7 @@ export const clearRedirect = () => {
 export function fetchFavorite(favorite) {
   return (dispatch) => {
     dispatch({ type: 'LOADING_FAVORITE' });
-    return fetch(`http://localhost:3001/api/v1/charities/${favorite.id}`)
+    return fetch(`/api/v1/charities/${favorite.id}`)
       .then(handleErrors)
       .then(response => response.json())
       .then(json => dispatch({ type: 'FETCH_FAVORITE', payload: json }))
