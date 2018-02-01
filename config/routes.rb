@@ -4,8 +4,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :charities
       scope path: '/charity_nav', controller: :charity_nav do
-        post 'search' => :search
-        post 'list' => :list
+        post 'search_state' => :search_state
+        post 'search_ein' => :search_ein
       end
     end
   end

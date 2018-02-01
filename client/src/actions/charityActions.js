@@ -1,6 +1,3 @@
-const charityNavId = process.env.REACT_APP_CHARITYNAV_ID;
-const charityNavKey = process.env.REACT_APP_CHARITYNAV_KEY;
-
  export function fetchCharities(stateCode) {
    return dispatch => {
      dispatch({ type: 'LOADING_CHARITIES' });
@@ -9,8 +6,8 @@ const charityNavKey = process.env.REACT_APP_CHARITYNAV_KEY;
        headers: { 'Content-Type' : 'application/json'
        },
        body: JSON.stringify({charity_nav: {state: stateCode} })
-     };
-     fetch(`/api/v1/charity_nav/search`, request)
+      };
+     fetch(`/api/v1/charity_nav/search_state`, request)
        .then(handleErrors)
        .then(response => response.json())
        .then(json => dispatch({ type: 'FETCH_CHARITIES', payload: json }))
@@ -25,9 +22,15 @@ const charityNavKey = process.env.REACT_APP_CHARITYNAV_KEY;
        dispatch(displayError())
      }
    } else {
-     return (dispatch) => {
+     return dispatch => {
        dispatch({ type: 'LOADING_CHARITY' });
-       return fetch("https://api.data.charitynavigator.org/v2/Organizations/"+ein+`?app_id=${charityNavId}&app_key=${charityNavKey}`)
+       const request = {
+         method: 'post',
+         headers: { 'Content-Type' : 'application/json'
+         },
+         body: JSON.stringify({charity_nav: {ein: ein} })
+       };
+      fetch(`/api/v1/charity_nav/search_ein`, request)
          .then(handleErrors)
          .then(response => response.json())
          .then(json => dispatch({ type: 'FETCH_CHARITY', payload: json }))
