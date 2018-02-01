@@ -4,7 +4,6 @@ const charitiesReducer = (state = {loading: false, charityResults: [], hasError:
       console.log('LOADING_CHARITIES')
       return {...state, loading: true, charityResults: []}
     case 'FETCH_CHARITIES':
-      debugger;
       console.log('FETCH_CHARITIES' + state)
       return {...state, loading: false, charityResults: action.payload}
     case 'HANDLE_ERROR':

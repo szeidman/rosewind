@@ -3,10 +3,12 @@ const charityNavKey = process.env.REACT_APP_CHARITYNAV_KEY;
 
  export function fetchCharities(stateCode) {
    return dispatch => {
+     dispatch({ type: 'LOADING_CHARITIES' });
      const request = {
        method: 'post',
        headers: { 'Content-Type' : 'application/json'
        },
+       body: JSON.stringify({charity_nav: {state: stateCode} })
      };
      fetch(`/api/v1/charity_nav/search`, request)
        .then(handleErrors)
