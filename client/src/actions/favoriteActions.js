@@ -22,7 +22,6 @@ export const createFavorite = (favorite, createHistory) => {
       method: 'post',
       headers: { 'Content-Type' : 'application/json'
       },
-      body: JSON.stringify({ charity: favorite })
     };
     fetch(`/api/v1/charities`, request)
       .then(handleErrors)

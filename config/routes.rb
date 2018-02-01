@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :charities
+      scope path: '/charity_nav', controller: :charity_nav do
+        post 'search' => :search
+        post 'list' => :list
+      end
     end
   end
 

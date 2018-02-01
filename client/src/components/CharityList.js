@@ -5,6 +5,7 @@ import './list.css';
 
 const CharityList = ({charityState}) => {
 
+  debugger;
   const SortedCharities = charityState.sort((a,b) => a.charityName.localeCompare(b.charityName));
 
   const CharityRender = SortedCharities.map(charity =>
