@@ -23,6 +23,7 @@ const FavoriteDetail = ({favorite}) => {
   }
 
   if (!!favorite.ein) {
+    debugger;
     return (
     <div className="favoriteInfo">
       <CardHeader
