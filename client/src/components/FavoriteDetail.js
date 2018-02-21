@@ -1,25 +1,14 @@
 import React from 'react';
 import {CardHeader} from 'material-ui/Card';
+import moment from 'moment';
 
 const FavoriteDetail = ({favorite}) => {
 
   let CreateTime, EditTime;
 
-  function timeParse(datetime) {
-    let date = datetime.split("T")[0];
-    let time = datetime.split("T")[1];
-    let month = date.split("-")[1];
-    let day = date.split("-")[2];
-    let year = date.split("-")[0];
-    let hour = time.split(":")[0];
-    let minute = time.split(":")[1];
-    let second = time.split(":")[2].split(".")[0];
-    return `${month}/${day}/${year} at ${hour}:${minute}:${second}`;
-  }
-
   if (!!favorite.created_at) {
-    CreateTime = timeParse(favorite.created_at);
-    EditTime = timeParse(favorite.updated_at)
+    CreateTime = moment(favorite.created_at).format('MMMM Do YYYY, h:mm:ss a');
+    EditTime = moment(favorite.updated_at).format('MMMM Do YYYY, h:mm:ss a');
   }
 
   if (!!favorite.ein) {
