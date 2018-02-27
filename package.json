@@ -1,7 +1,8 @@
 {
   "name": "rosewind",
   "engines": {
-    "node": "8.9.1"
+    "node": "8.9.1",
+    "npm": "5.5.1"
   },
   "scripts": {
     "build": "cd client && npm install && npm run build && cd ..",
