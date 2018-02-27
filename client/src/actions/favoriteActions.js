@@ -1,6 +1,5 @@
 import { resetFavoriteForm } from './favoriteFormActions';
 
-
 export function fetchFavorites() {
 
   return (dispatch) => {
@@ -37,6 +36,7 @@ export const createFavorite = (favorite, createHistory) => {
 }
 
 export const updateFavorite = (favorite, favoriteID) => {
+  debugger;
   const updateURI = `/api/v1/charities/${favoriteID}`;
   return dispatch => {
     const request = {
@@ -59,6 +59,7 @@ export const updateFavorite = (favorite, favoriteID) => {
 
 export const deleteFavorite = (favorite, deleteHistory) => {
   return dispatch => {
+    debugger;
     fetch(`/api/v1/charities/${favorite.id}`, {
       method: 'delete'
     }).then(handleErrors)
