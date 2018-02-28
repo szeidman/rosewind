@@ -7,7 +7,7 @@ module API
       def index
         @charities = Charity.all
 
-        render json: @charities
+        render json: @charities.to_json
       end
 
       # GET /charities/1

@@ -36,8 +36,6 @@ export const createFavorite = (favorite, createHistory) => {
 }
 
 export const updateFavorite = (favorite, favoriteID) => {
-  console.log(favorite)
-  console.log(favorite.id)
   const updateURI = `/api/v1/charities/${favoriteID}`;
   return dispatch => {
     const request = {
@@ -60,8 +58,6 @@ export const updateFavorite = (favorite, favoriteID) => {
 
 export const deleteFavorite = (favorite, deleteHistory) => {
   return dispatch => {
-    console.log(favorite)
-    console.log(favorite.id)
     fetch(`/api/v1/charities/${favorite.id}`, {
       method: 'delete'
     }).then(handleErrors)
