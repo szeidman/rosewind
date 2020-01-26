@@ -21,7 +21,7 @@ gem "sprockets", ">= 3.7.2"
 # TODO: update rails to be able to update activejob.
 gem 'rails', '~> 5.1.2'
 
-gem 'puma', '~> 3.7'
+gem 'puma', '~> 3.12'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
