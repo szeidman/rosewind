@@ -10,7 +10,7 @@
     "postinstall": "npm run build && npm run deploy && echo 'Client built!'"
   },
   "dependencies": {
-    "moment": "^2.20.1",
+    "moment": "^2.29.2",
     "react": "^16.11.0",
     "react-dom": "^16.11.0"
   },
